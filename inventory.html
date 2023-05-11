@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory</title>
+</head>
+<body>
+    <h1>Inventory</h1>
+    
+    <table border="1">
+        <tr>
+            <th>Inventory ID</th>
+            <th>Product ID</th>
+            <th>Location ID</th>
+            <th>In Stock Quantity</th>
+            <th>Actions</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>10</td>
+            <td><button>Update</button><button>Delete</button></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>2</td>
+            <td>1</td>
+            <td>8</td>
+            <td><button>Update</button><button>Delete</button></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>3</td>
+            <td>1</td>
+            <td>20</td>
+            <td><button>Update</button><button>Delete</button></td>
+        </tr>
+    </table>
+
+    <form>
+        <label for="productID">Product ID:</label><br>
+        <input type="text" id="productID" name="productID"><br>
+        <label for="locationID">Location ID:</label><br>
+        <input type="text" id="locationID" name="locationID"><br>
+        <label for="inStockQuantity">In Stock Quantity:</label><br>
+        <input type="text" id="inStockQuantity" name="inStockQuantity"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
