@@ -1,50 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Locations</title>
+  <title>Locations</title>
+  <link href="style.css"
+        rel="stylesheet"
+        type="text/css">
 </head>
 <body>
-    <h1>Locations</h1>
-
-    <table border="1">
-        <tr>
-            <th>Location ID</th>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Phone</th>
-            <th>Actions</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Portland Downtown</td>
-            <td>124 Main St, Portland</td>
-            <td>5035551122</td>
-            <td><button>Update</button><button>Delete</button></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Portland East</td>
-            <td>456 82nd St, Portland</td>
-            <td>5035552233</td>
-            <td><button>Update</button><button>Delete</button></td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Gresham</td>
-            <td>789 Main St, Gresham</td>
-            <td>5035553344</td>
-            <td><button>Update</button><button>Delete</button></td>
-        </tr>
-    </table>
-
-    <form>
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name"><br>
-        <label for="address">Address:</label><br>
-        <input type="text" id="address" name="address"><br>
-        <label for="phone">Phone:</label><br>
-        <input type="text" id="phone" name="phone"><br>
-        <input type="submit" value="Submit">
-    </form>
+  <h1>Locations</h1>
+  <table border="1">
+    <tr>
+      <th>Location ID</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Actions</th>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td>Portland Downtown</td>
+      <td>124 Main St, Portland</td>
+      <td>5035551122</td>
+      <td><button>Update</button><button>Delete</button></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td>Portland East</td>
+      <td>456 82nd St, Portland</td>
+      <td>5035552233</td>
+      <td><button>Update</button><button>Delete</button></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td>Gresham</td>
+      <td>789 Main St, Gresham</td>
+      <td>5035553344</td>
+      <td><button>Update</button><button>Delete</button></td>
+    </tr>
+  </table><br>
+  <br>
+  <br>
+  <form>
+    <label for="name">Name:</label> <input id="name"
+          name="name"
+          type="text"><br>
+    <br>
+    <label for="address">Address:</label> <input id="address"
+          name="address"
+          type="text"><br>
+    <br>
+    <label for="phone">Phone:</label> <input id="phone"
+          name="phone"
+          type="text"><br>
+    <br>
+    <div style="text-align:center">
+      <input type="submit"
+           value="Submit">
+    </div>
+  </form>
 </body>
 </html>

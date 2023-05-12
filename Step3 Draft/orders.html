@@ -1,60 +1,90 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Orders</title>
+  <title>Orders</title>
+  <link href="style.css"
+        rel="stylesheet"
+        type="text/css">
 </head>
 <body>
-    <h1>Orders</h1>
-
-    <table border="1">
-        <tr>
-            <th>Order ID</th>
-            <th>Customer ID</th>
-            <th>Order Date</th>
-            <th>Total</th>
-            <th>Actions</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>2023-05-01</td>
-            <td>700.00</td>
-            <td><button>Update</button><button>Delete</button></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>2</td>
-            <td>2023-05-02</td>
-            <td>600.00</td>
-            <td><button>Update</button><button>Delete</button></td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>3</td>
-            <td>2023-05-03</td>
-            <td>400.00</td>
-            <td><button>Update</button><button>Delete</button></td>
-        </tr>
-    </table>
-    
-    <form>
-        <label for="customerID">Customer ID:</label><br>
-        <input type="text" id="customerID" name="customerID"><br>
-        <label for="orderDate">Order Date:</label><br>
-        <input type="date" id="orderDate" name="orderDate"><br>
-        <label for="total">Total:</label><br>
-        <input type="text" id="total" name="total"><br>
-        <input type="submit" value="Submit">
-    </form>
-    <h2>Order Products</h2>
-    <form>
-        <label for="productID">Product ID:</label><br>
-        <input type="text" id="productID" name="productID"><br>
-        <label for="quantity">Quantity:</label><br>
-        <input type="text" id="quantity" name="quantity"><br>
-        <label for="price">Price:</label><br>
-        <input type="text" id="price" name="price"><br>
-        <input type="submit" value="Submit">
-    </form>
+  <h1>Orders</h1>
+  <table border="1">
+    <tr>
+      <th>Order ID</th>
+      <th>Customer ID</th>
+      <th>Order Date</th>
+      <th>Total</th>
+      <th>Actions</th>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td>2023-05-01</td>
+      <td style="text-align: right">700.00</td>
+      <td><button>Update</button><button>Delete</button></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">2</td>
+      <td>2023-05-02</td>
+      <td style="text-align: right">600.00</td>
+      <td><button>Update</button><button>Delete</button></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">3</td>
+      <td>2023-05-03</td>
+      <td style="text-align: right">400.00</td>
+      <td><button>Update</button><button>Delete</button></td>
+    </tr>
+  </table>
+  <table border="0">
+    <tr>
+      <td>
+        <h2 style="text-align: center">Customer Search</h2>
+        <form>
+          <label for="customerID">Customer ID:</label><br>
+          <input id="customerID"
+                name="customerID"
+                type="text"><br>
+          <label for="orderDate">Order Date:</label><br>
+          <input id="orderDate"
+                name="orderDate"
+                type="date"><br>
+          <label for="total">Total:</label><br>
+          <input id="total"
+                name="total"
+                type="text"><br>
+          <br>
+          <div style="text-align:center">
+            <input type="submit"
+                 value="Submit">
+          </div>
+        </form>
+      </td>
+      <td>
+        <h2 style="text-align: center">Order Products</h2>
+        <form>
+          <label for="productID">Product ID:</label><br>
+          <input id="productID"
+                name="productID"
+                type="text"><br>
+          <label for="quantity">Quantity:</label><br>
+          <input id="quantity"
+                name="quantity"
+                type="text"><br>
+          <label for="price">Price:</label><br>
+          <input id="price"
+                name="price"
+                type="text"><br>
+          <br>
+          <div style="text-align:center">
+            <input type="submit"
+                 value="Submit">
+          </div>
+        </form>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>
