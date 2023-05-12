@@ -1,56 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Products</title>
+  <title>Products</title>
+  <link href="style.css"
+        rel="stylesheet"
+        type="text/css">
 </head>
 <body>
-    <h1>Products</h1>
-
-    <table border="1">
-        <tr>
-            <th>Product ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Supplier ID</th>
-            <th>Actions</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Mountain Bike</td>
-            <td>Sturdy all-terrain bike</td>
-            <td>350.00</td>
-            <td>1</td>
-            <td><button>Update</button><button>Delete</button></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Road Bike</td>
-            <td>Lightweight and fast road bike</td>
-            <td>550.00</td>
-            <td>2</td>
-            <td><button>Update</button><button>Delete</button></td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Helmet</td>
-            <td>Protective headgear</td>
-            <td>50.00</td>
-            <td>3</td>
-            <td><button>Update</button><button>Delete</button></td>
-        </tr>
-    </table>
-    
-    <form>
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name"><br>
-        <label for="description">Description:</label><br>
-        <input type="text" id="description" name="description"><br>
-        <label for="price">Price:</label><br>
-        <input type="text" id="price" name="price"><br>
-        <label for="supplierID">Supplier ID:</label><br>
-        <input type="text" id="supplierID" name="supplierID"><br>
-        <input type="submit" value="Submit">
-    </form>
+  <h1>Products</h1>
+  <table border="1">
+    <tr>
+      <th>Product ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Supplier ID</th>
+      <th>Actions</th>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td>Mountain Bike</td>
+      <td>Sturdy all-terrain bike</td>
+      <td style="text-align: right">350.00</td>
+      <td style="text-align: center">1</td>
+      <td><button>Update</button><button>Delete</button></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td>Road Bike</td>
+      <td>Lightweight and fast road bike</td>
+      <td style="text-align: right">550.00</td>
+      <td style="text-align: center">2</td>
+      <td><button>Update</button><button>Delete</button></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td>Helmet</td>
+      <td>Protective headgear</td>
+      <td style="text-align: right">50.00</td>
+      <td style="text-align: center">3</td>
+      <td><button>Update</button><button>Delete</button></td>
+    </tr>
+  </table><br>
+  <br>
+  <form>
+    <label for="name">Name:</label> <input id="name"
+          name="name"
+          type="text"><br>
+    <br>
+    <label for="description">Description:</label> <input id="description"
+          name="description"
+          type="text"><br>
+    <br>
+    <label for="price">Price:</label> <input id="price"
+          name="price"
+          type="text"><br>
+    <br>
+    <label for="supplierID">Supplier ID:</label> <input id="supplierID"
+          name="supplierID"
+          type="text"><br>
+    <br>
+    <div style="text-align:center">
+      <input type="submit"
+           value="Submit">
+    </div>
+  </form>
 </body>
 </html>
