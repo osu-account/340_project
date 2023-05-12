@@ -6,6 +6,8 @@
     Team 86, Schema-Teama
     Chris Hall and John McCormick
     2023-05-04
+
+    Updated 2023-05-11
 */
 
 /* SET CHECKS AND DROPS */
@@ -57,7 +59,7 @@ CREATE OR REPLACE TABLE `Inventory` (
 );
 
 CREATE OR REPLACE TABLE `Orders` (
-    `orderID` int NOT NULL AUTO_INCREMENT,
+    `orderID` int NOT NULL,
     `customerID` int NOT NULL,
     `orderDate` date NOT NULL,
     `total` decimal(10,2) NOT NULL,
