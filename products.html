@@ -2,12 +2,38 @@
 <html lang="en">
 <head>
   <title>Products</title>
-  <link href="style.css"
-        rel="stylesheet"
-        type="text/css">
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <link href="addition.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+  <nav class="topNav">
+    <ul>
+      <li>
+        <a href="customers.html">Customers</a>
+      </li>
+      <li>
+        <a href="products.html">Products</a>
+      </li>
+      <li>
+        <a href="suppliers.html">Suppliers</a>
+      </li>
+      <li>
+        <a href="inventory.html">Inventory</a>
+      </li>
+      <li>
+        <a href="orders.html">Orders</a>
+      </li>
+      <li>
+        <a href="orderProducts.html">Order Products</a>
+      </li>
+      <li>
+        <a href="locations.html">Locations</a>
+      </li>
+    </ul>
+  </nav>
+  
   <h1>Products</h1>
+  <h2>Database</h2>
   <table border="1">
     <tr>
       <th>Product ID</th>
@@ -42,28 +68,68 @@
       <td><button>Update</button><button>Delete</button></td>
     </tr>
   </table><br>
-  <br>
-  <form>
-    <label for="name">Name:</label> <input id="name"
-          name="name"
-          type="text"><br>
-    <br>
-    <label for="description">Description:</label> <input id="description"
-          name="description"
-          type="text"><br>
-    <br>
-    <label for="price">Price:</label> <input id="price"
-          name="price"
-          type="text"><br>
-    <br>
-    <label for="supplierID">Supplier ID:</label> <input id="supplierID"
-          name="supplierID"
-          type="text"><br>
-    <br>
-    <div style="text-align:center">
-      <input type="submit"
-           value="Submit">
+  
+  <section class="flex">
+    <div class="box">
+      <h2>Add a New Product</h2>
+      <form id="addProduct" action="/addProduct" method="post">
+          <label for="name">Name:</label><br>
+          <input type="text" id="name" name="name"><br>
+          <label for="desc">Description:</label><br>
+          <input type="text" id="desc" name="desc"><br>
+          <label for="price">Price:</label><br>
+          <input type="text" id="price" name="price"><br>
+          <label for="sId">Supplier:</label><br>
+          <select id="sId" name="sId">
+            <!-- Dynamically populated list of suppliers will go here -->
+            <option>1: AllTerrain Co.</option>
+            <option>2: SpeedBikes Inc.</option>
+            <option>3: SafeCyclist Ltd.</option>
+          </select><br>
+          <input type="submit" value="Add Product">
+      </form>
     </div>
-  </form>
+    
+    <div class="box">
+        <h2>Update a Product</h2>
+        <form id="updateProduct" action="/updateProduct" method="post">
+            <label for="pId">Select Product:</label><br>
+            <select id="pId" name="pId">
+              <!-- Dynamically populated list of products will go here-->
+              <option>1: Mountain Bike</option>
+              <option>2: Road Bike</option>
+              <option>3: Helmet</option>
+            </select><br>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name"><br>
+            <label for="desc">Description:</label><br>
+            <input type="text" id="desc" name="desc"><br>
+            <label for="price">Price:</label><br>
+            <input type="text" id="price" name="price"><br>
+            <label for="sId">Supplier:</label><br>
+            <select id="sId" name="sId">
+              <!-- Dynamically populated list of suppliers will go here-->
+              <option>1: AllTerrain Co.</option>
+              <option>2: SpeedBikes Inc.</option>
+              <option>3: SafeCyclist Ltd.</option>
+            </select><br>
+            <input type="submit" value="Update Product">
+        </form>
+      </div>
+
+      <div class="box">
+        <h2>Delete a Product</h2>
+        <form id="deleteProduct" action="/deleteProduct" method="post">
+            <label for="pId">Select Product:</label><br>
+            <select id="pId" name="pId">
+              <!-- Dynamically populated list of products will go here -->
+              <option>1: Mountain Bike</option>
+              <option>2: Road Bike</option>
+              <option>3: Helmet</option>
+            </select><br>
+            <input type="submit" value="Delete Product">
+        </form>
+      </div>
+  </section>
 </body>
 </html>
