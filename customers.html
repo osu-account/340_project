@@ -2,36 +2,37 @@
 <html lang="en">
 <head>
   <title>Customers</title>
-  <link href="style.css" rel="stylesheet" type="text/css">
-  <link href="addition.css" rel="stylesheet" type="text/css">
+  <link href="style.css"
+        rel="stylesheet"
+        type="text/css">
 </head>
 <body>
+  <button class="home-button">Home</button> 
+  <script>
+
+
+  document.querySelector(".home-button").addEventListener("click", function() {
+      window.location.href = "index.html";
+    });
+  </script>
   <nav class="topNav">
     <ul>
-      <li>
-        <a href="customers.html">Customers</a>
-      </li>
-      <li>
-        <a href="products.html">Products</a>
-      </li>
-      <li>
-        <a href="suppliers.html">Suppliers</a>
-      </li>
-      <li>
-        <a href="inventory.html">Inventory</a>
-      </li>
-      <li>
-        <a href="orders.html">Orders</a>
-      </li>
-      <li>
-        <a href="orderProducts.html">Order Products</a>
-      </li>
-      <li>
-        <a href="locations.html">Locations</a>
-      </li>
+      <li><button class="button"
+              style="background-color: #F77D24;"><a href="customers.html">Customers</a></button></li>
+      <li><button class="button"
+              style="background-color: #F77D24;"><a href="products.html">Products</a></button></li>
+      <li><button class="button"
+              style="background-color: #F77D24;"><a href="suppliers.html">Suppliers</a></button></li>
+      <li><button class="button"
+              style="background-color: #F77D24;"><a href="inventory.html">Inventory</a></button></li>
+      <li><button class="button"
+              style="background-color: #F77D24;"><a href="orders.html">Orders</a></button></li>
+      <li><button class="button"
+              style="background-color: #F77D24;"><a href="orderProducts.html">Order Products</a></button></li>
+      <li><button class="button"
+              style="background-color: #F77D24;"><a href="locations.html">Locations</a></button></li>
     </ul>
   </nav>
-
   <h1>Customers</h1>
   <h2>Database</h2>
   <table border="1">
@@ -72,62 +73,105 @@
       <td><button>Update</button><button>Delete</button></td>
     </tr>
   </table><br>
-
   <section class="flex">
     <div class="box">
       <h2>Add a New Customer</h2>
-      <form id="addCustomer" action="/addCustomer" method="post">
+      <form action="/addCustomer"
+            id="addCustomer"
+            method="post"
+            name="addCustomer">
         <label for="fName">First Name:</label><br>
-        <input type="text" id="fName" name="fName"><br>
+        <input id="fName"
+              name="fName"
+              type="text"><br>
         <label for="lName">Last Name:</label><br>
-        <input type="text" id="lName" name="lName"><br>
+        <input id="lName"
+              name="lName"
+              type="text"><br>
         <label for="email">Email:</label><br>
-        <input type="text" id="email" name="email"><br>
+        <input id="email"
+              name="email"
+              type="text"><br>
         <label for="address">Address:</label><br>
-        <input type="text" id="address" name="address"><br>
+        <input id="address"
+              name="address"
+              type="text"><br>
         <label for="phoneNum">Phone Number:</label><br>
-        <input type="text" id="phoneNum" name="phoneNum"><br>
-        <input type="submit" value="Add Customer">
+        <input id="phoneNum"
+              name="phoneNum"
+              type="text"><br>
+        <input type="submit"
+              value="Add Customer">
       </form>
-      </div>
-  
-      <div class="box">
-        <h2>Update a Customer</h2>
-        <form id="updateCustomer" action="/updateCustomer" method="post">
-          <label for="cId">Select Customer:</label><br>
-          <select id="cId" name="cId">
-            <!-- Dynamically populated list of customers will go here -->
-            <option>1: John Doe</option>
-            <option>2: Jane Doe</option>
-            <option>3: Bob Doe</option>
-          </select><br>
-          <label for="fName">First Name:</label><br>
-          <input type="text" id="fName" name="fName"><br>
-          <label for="lName">Last Name:</label><br>
-          <input type="text" id="lName" name="lName"><br>
-          <label for="email">Email:</label><br>
-          <input type="text" id="email" name="email"><br>
-          <label for="address">Address:</label><br>
-          <input type="text" id="address" name="address"><br>
-          <label for="phoneNum">Phone Number:</label><br>
-          <input type="text" id="phoneNum" name="phoneNum"><br>
-          <input type="submit" value="Update Customer">
-        </form>
-      </div>
-  
-      <div class="box">
-        <h2>Delete a Customer</h2>
-        <form id="deleteCustomer" action="/deleteCustomer" method="post">
-          <label for="cId">Select Customer:</label><br>
-          <select id="cId" name="cId">
-            <!-- Dynamically populated list of customers will go here -->
-            <option>1: John Doe</option>
-            <option>2: Jane Doe</option>
-            <option>3: Bob Doe</option>
-          </select><br>
-          <input type="submit" value="Delete Customer">
-        </form>
-      </div>
+    </div>
+    <div class="box">
+      <h2>Update a Customer</h2>
+      <form action="/updateCustomer"
+            id="updateCustomer"
+            method="post"
+            name="updateCustomer">
+        <label for="cId">Select Customer:</label><br>
+        <select id="cId"
+              name="cId">
+          <!-- Dynamically populated list of customers will go here -->
+          <option>
+            1: John Doe
+          </option>
+          <option>
+            2: Jane Doe
+          </option>
+          <option>
+            3: Bob Doe
+          </option>
+        </select><br>
+        <label for="fName">First Name:</label><br>
+        <input id="fName2"
+              name="fName"
+              type="text"><br>
+        <label for="lName">Last Name:</label><br>
+        <input id="lName2"
+              name="lName"
+              type="text"><br>
+        <label for="email">Email:</label><br>
+        <input id="email2"
+              name="email"
+              type="text"><br>
+        <label for="address">Address:</label><br>
+        <input id="address2"
+              name="address"
+              type="text"><br>
+        <label for="phoneNum">Phone Number:</label><br>
+        <input id="phoneNum2"
+              name="phoneNum"
+              type="text"><br>
+        <input type="submit"
+              value="Update Customer">
+      </form>
+    </div>
+    <div class="box">
+      <h2>Delete a Customer</h2>
+      <form action="/deleteCustomer"
+            id="deleteCustomer"
+            method="post"
+            name="deleteCustomer">
+        <label for="cId">Select Customer:</label><br>
+        <select id="cId2"
+              name="cId">
+          <!-- Dynamically populated list of customers will go here -->
+          <option>
+            1: John Doe
+          </option>
+          <option>
+            2: Jane Doe
+          </option>
+          <option>
+            3: Bob Doe
+          </option>
+        </select><br>
+        <input type="submit"
+              value="Delete Customer">
+      </form>
+    </div>
   </section>
 </body>
 </html>

@@ -29,7 +29,7 @@ CREATE OR REPLACE TABLE `Customers` (
 CREATE OR REPLACE TABLE `Products` (
     `productID` int NOT NULL AUTO_INCREMENT,
     `name` varchar(45) NOT NULL,
-    `description` varchar(45) NOT NULL,
+    `description` varchar(45),
     `price` decimal(10,2) NOT NULL,
     `supplierID` int NOT NULL,
     UNIQUE KEY `productID` (`productID`),

@@ -2,6 +2,8 @@
    Date: 2022-04-20
    Author: John McCormick (self)
    Based upon project in OSU CS290 class project in Spring 2022.
+   
+   Additional stylings by Chris Hall are included.
 */
 
 body {
@@ -10,7 +12,7 @@ body {
   background-color: #f5ebdc;
   color: #0066b2;
   margin: 15px;
-  margin-top: calc(30px + 5vmin);
+  margin-top: calc(30px + 2vmin);
   padding: 1px;
   display: flex;
   flex-direction: column;
@@ -25,15 +27,62 @@ html {
 }
 
 h1 {
-  font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
-  font-size: calc(10px + 5vmin);
+	font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+  font-size: calc(10px + 4vmin);
+  font-style: normal;
+  font-variant: small-caps;
+  font-weight: 700;
   color: #0066b2;
+  margin-bottom: 0;
+  padding-top: 10px;
 }
 
 h2 {
-  font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+  font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
   font-size: calc(10px + 2vmin);
+  font-style: normal;
+  font-variant: small-caps;
+  font-weight: 700;
   color: #ec1c24;
+  margin-top: 0;
+  padding-bottom: 10px;
+}
+
+/* 
+    Additional stylings by Chris Hall
+*/
+
+section.flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+div.box {
+  display: block;
+  margin: 0 2rem;
+}
+
+nav.topNav {
+  position: relative;
+  top: 20px;
+}
+
+nav.topNav ul {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+nav.topNav ul li {
+  display: block;
+  margin: 0 1.5rem;
+}
+
+nav.topNav ul li button {
+  border-radius: 5px;
+  text-decoration: none;
 }
 
 /* ============================ */
@@ -129,12 +178,23 @@ button {
   text-decoration: none;
 }
 
+.home-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 100px;
+  height: 25px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', sans-serif;
+  font-size: calc(8px + 1vmin);
+  text-align: center;
+}
+
 /* ======================================= */
 /* ======= HEADERS & FOOTERS STYLE ======= */
 /* ======================================= */
 .page-header {
   background-color: #fdbd10;
-  font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+  font-family: 'Arial Black', 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
   font-size: calc(10px + 5vmin);
   color: #ec1c24;
   padding: 20px;
@@ -151,7 +211,7 @@ button {
 
 .page-footer {
   background-color: #fdbd10;
-  font-family: 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+  font-family: 'Arial Black', 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
   font-size: calc(10px + 5vmin);
   color: #ec1c24;
   padding: 20px;
@@ -175,6 +235,7 @@ button {
 */
 
 /* ======= FONTS =======
-    HEADINGS => 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif
+    HEADINGS => 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+    [OLD] HEADINGS => 'Arial Black', 'Impact', 'Haettenschweiler', 'Arial Narrow Bold', sans-serif
     TEXT => 'Franklin Gothic Medium', 'Arial Narrow', 'Arial', sans-serif
 */

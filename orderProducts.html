@@ -2,36 +2,39 @@
 <html lang="en">
 <head>
   <title>Order Products</title>
-  <link href="style.css" rel="stylesheet" type="text/css">
-  <link href="addition.css" rel="stylesheet" type="text/css">
+  <link href="style.css"
+        rel="stylesheet"
+        type="text/css">
 </head>
 <body>
+  <button class="home-button"
+        href="/">Home</button> 
+  <script>
+
+
+
+  document.querySelector(".home-button").addEventListener("click", function() {
+      window.location.href = "index.html";
+    });
+  </script>
   <nav class="topNav">
     <ul>
-      <li>
-        <a href="customers.html">Customers</a>
-      </li>
-      <li>
-        <a href="products.html">Products</a>
-      </li>
-      <li>
-        <a href="suppliers.html">Suppliers</a>
-      </li>
-      <li>
-        <a href="inventory.html">Inventory</a>
-      </li>
-      <li>
-        <a href="orders.html">Orders</a>
-      </li>
-      <li>
-        <a href="orderProducts.html">Order Products</a>
-      </li>
-      <li>
-        <a href="locations.html">Locations</a>
-      </li>
+      <li><button class="button"
+              style="background-color: #F77D24;"><a href="customers.html">Customers</a></button></li>
+      <li><button class="button"
+              style="background-color: #F77D24;"><a href="products.html">Products</a></button></li>
+      <li><button class="button"
+              style="background-color: #F77D24;"><a href="suppliers.html">Suppliers</a></button></li>
+      <li><button class="button"
+              style="background-color: #F77D24;"><a href="inventory.html">Inventory</a></button></li>
+      <li><button class="button"
+              style="background-color: #F77D24;"><a href="orders.html">Orders</a></button></li>
+      <li><button class="button"
+              style="background-color: #F77D24;"><a href="orderProducts.html">Order Products</a></button></li>
+      <li><button class="button"
+              style="background-color: #F77D24;"><a href="locations.html">Locations</a></button></li>
     </ul>
   </nav>
-
   <h1>Order Products</h1>
   <h2>Database</h2>
   <table border="1">
