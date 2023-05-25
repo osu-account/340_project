@@ -1,0 +1,64 @@
+<!-- index.hbs-->
+
+  <h1>Portland Cycling Specialties</h1>
+  <h2>Administration Page</h2>
+  <h3>NOTE: For Step 4 Draft only Customers can be used for demo.</h3>
+  <table border="0">
+    <tr>
+      <td valign="top">
+        <ul>
+          <li><button class="button"
+                  style="background-color: #F77D24;"><a href="customers">Customers</a></button></li><br>
+          <li><button class="button"
+                  style="background-color: #F77D24;"><a href="products">Products</a></button></li><br>
+          <li><button class="button"
+                  style="background-color: #F77D24;"><a href="suppliers">Suppliers</a></button></li><br>
+          <li><button class="button"
+                  style="background-color: #F77D24;"><a href="inventory">Inventory</a></button></li>
+        </ul>
+      </td>
+      <td valign="top">
+        <ul>
+          <li><button class="button"
+                  style="background-color: #F77D24;"><a href="orders">Orders</a></button></li><br>
+          <li><button class="button"
+                  style="background-color: #F77D24;"><a href="orderProducts">Order Products</a></button></li><br>
+          <li><button class="button"
+                  style="background-color: #F77D24;"><a href="locations">Locations</a></button></li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+  <p>TEST</p>
+ {{!-- Create a table --}}
+<table>
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- For just the first row, we print each key of the row object as a header cell so we
+        know what each column means when the page renders --}}
+        <tr>
+            {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}}
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the id, fname, lname, homeworld and age, in order --}}
+        {{#each data}}
+        <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.fname}}</td>
+            <td>{{this.lname}}</td>
+            <td>{{this.homeworld}}</td>
+            <td>{{this.age}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table> 
