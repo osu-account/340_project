@@ -9,9 +9,15 @@ updateCustomerForm.addEventListener("submit", function (e) {
 
     // Get form fields we need to get data from
     let inputFullName = document.getElementById("mySelect");
+    let inputEmail = document.getElementById("input-email");
+    let inputAddress = document.getElementById("input-address");
+    let inputPhoneNum = document.getElementById("input-phoneNum");
 
     // Get the values from the form fields
     let fullNameValue = inputFullName.value;
+    let emailValue = inputEmail.value;
+    let addressValue = inputAddress.value;
+    let phoneNumValue = inputPhoneNum.value;
 
     // Put our data we want to send in a javascript object
     let data = {
@@ -30,7 +36,7 @@ updateCustomerForm.addEventListener("submit", function (e) {
     xhttp.onreadystatechange = () => {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
 
-            // Add the new data to the table
+            // Update the row data
             updateRow(xhttp.response, fullNameValue);
 
         }
@@ -41,7 +47,6 @@ updateCustomerForm.addEventListener("submit", function (e) {
 
     // Send the request and wait for the response
     xhttp.send(JSON.stringify(data));
-
 })
 
 
@@ -52,11 +57,12 @@ function updateRow(data, customerID){
 
     for (let i = 0, row; row = table.rows[i]; i++) {
         if (table.rows[i].getAttribute("data-value") == customerID) {
-                let updateRowIndex = table.getElementsByTagName("tr")[i];
-                let td = updateRowIndex.getElementsByTagName("td")[3];
-                td.innerHTML = parsedData[0].fullName;
+            let updateRowIndex = table.getElementsByTagName("tr")[i];
+            updateRowIndex.getElementsByTagName("td")[0].innerText = parsedData.firstName;
+            updateRowIndex.getElementsByTagName("td")[1].innerText = parsedData.lastName;
+            updateRowIndex.getElementsByTagName("td")[2].innerText = parsedData.email;
+            updateRowIndex.getElementsByTagName("td")[3].innerText = parsedData.address;
+            updateRowIndex.getElementsByTagName("td")[4].innerText = parsedData.phoneNum;
         }
     }
 }
-
-
