@@ -106,13 +106,13 @@ app.get("/search-customer-html", function (req, res) {
 });
 
 // UPDATE a Customer
-app.post("/update-customer-ajax", function (req, res) {
+app.put("/put-customer-ajax", function (req, res) {
     let data = req.body;
     console.log(data);
-    let customer = parseInt(data.lastName);
+    let customerID = parseInt(data.customerID);
 
-    let query = `UPDATE Customers WHERE customerID = ?`;
-    db.pool.query(query, [customer], function (error, rows, fields) {
+    let query = `UPDATE Customers SET fullName = ?, email = ?, address = ?, phoneNum = ? WHERE customerID = ?`;
+    db.pool.query(query, [data.fullName, data.email, data.address, data.phoneNum, customerID], function (error, rows, fields) {
         if (error) {
             console.log(error);
             res.sendStatus(400);
