@@ -18,6 +18,7 @@
 </nav>
 
 <h1>Customers</h1>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 {{!-- Create a table --}}
 <table id="customers-table" border="1">
 
@@ -94,7 +95,7 @@
   <select name="input-customerID" id="mySelect">
     <option value="test">Select a Customer's ID</option>
     {{#each data}}
-      <option value="{{this.productID}}">{{this.productID}} - {{this.firstName}} - {{this.lastName}}</option>
+      <option value="{{this.customerID}}">{{this.customerID}} - {{this.lastName}}, {{this.firstName}}</option>
     {{/each}}
   </select>
 
