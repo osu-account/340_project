@@ -17,10 +17,10 @@
   </ul>
 </nav>
 
-<h1>Customers</h1>
+<h1>Locations</h1>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 {{!-- Create a table --}}
-<table id="customers-table" border="1">
+<table id="locations-table" border="1">
 
   {{! Header section }}
   <thead>
@@ -38,72 +38,63 @@
   <tbody>
     {{#each data}}
     <tr>
-      <td>{{this.customerID}}</td>
-      <td>{{this.firstName}}</td>
-      <td>{{this.lastName}}</td>
-      <td>{{this.email}}</td>
+      <td>{{this.locationID}}</td>
+      <td>{{this.name}}</td>
       <td>{{this.address}}</td>
-      <td>{{this.phoneNum}}</td>
+      <td>{{this.phone}}</td>
       
-      <td><button onclick="deleteCustomer({{this.customerID}})">Delete</button></td>
+      <td><button onclick="deleteLocation({{this.locationID}})">Delete</button></td>
     </tr>
     {{/each}}
   </tbody>
 </table>
-<script src="./js/delete_customer.js"></script>
+<script src="./js/delete_location.js"></script>
 
 
-<h2>Search Using an HTML Form</h2>
-<form id="search-customer-html" method='GET' action='/customers'>
-    <label for="input-lastName">Search by Last Name: </label>
-    <input type="text" name="lastName" id="input-lastName-html-search">
+<h2>Search Locations</h2>
+<form id="search-location-html" method='GET' action='/locations'>
+    <label for="input-name">Search Locations by Name: </label>
+    <input type="text" name="name" id="input-name-html-search">
     
     <input type="submit">
-    <a href='/customers'><button>Reset</button></a>
+    <a href='/locations'><button>Reset</button></a>
 </form>
-<p>Search by last name using the field above. Partial last names are OK too!</p>
+<p>Search Locations by Name using the field above. Partial last names are OK too!</p>
 
-<!-- /views/customers.hbs -->
-<h2>Add a New Customer</h2>
-<form id="add-customer-form-ajax">
-  <label for="input-firstName">First Name: </label>
-  <input type="text" name="input-firstName" id="input-firstName">
-
-  <label for="input-lastName">Last Name: </label>
-  <input type="text" name="input-lastName" id="input-lastName">
-
-  <label for="input-email">Email: </label>
-  <input type="text" name="input-email" id="input-email">
+<!-- /views/locations.hbs -->
+<h2>Add a New Location</h2>
+<form id="add-location-form-ajax">
+  <label for="input-name">Name: </label>
+  <input type="text" name="input-name" id="input-name">
 
   <label for="input-address">Address: </label>
   <input type="text" name="input-address" id="input-address">
 
-  <label for="input-phoneNum">Phone Number: </label>
-  <input type="text" name="input-phoneNum" id="input-phoneNum">
+  <label for="input-phone">Phone Number: </label>
+  <input type="text" name="input-phone" id="input-phone">
 
   <input type="submit">
 </form>
 {{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
-<script src="./js/add_customer.js"></script>
+<script src="./js/add_location.js"></script>
 
 
-<!-- /views/customers.hbs -->
-<h2>Update a Customer's Email</h2>
-<form id="update-customer-form-ajax">
+<!-- /views/locations.hbs -->
+<h2>Update a Location's Phone Number</h2>
+<form id="update-location-form-ajax">
 
-  <label for="input-customerID">Customer ID #: </label>
-  <select name="input-customerID" id="mySelect">
-    <option value="test">Select a Customer's ID</option>
+  <label for="input-locationID">Location ID #: </label>
+  <select name="input-locationID" id="mySelect">
+    <option value="test">Select a Location's ID</option>
     {{#each data}}
-      <option value="{{this.customerID}}">{{this.customerID}}</option>
+      <option value="{{this.locationID}}">{{this.locationID}}</option>
     {{/each}}
   </select>
 
-  <label for="input-email">Email: </label>
-  <input type="text" name="input-email" id="input-email-update">
+  <label for="input-phone">Phone Number: </label>
+  <input type="text" name="input-phone" id="input-phone-update">
 
   <input type="submit">
 
 </form>
-<script src="./js/update_customer.js"></script>
-
+<script src="./js/update_location.js"></script>

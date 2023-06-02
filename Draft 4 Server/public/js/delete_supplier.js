@@ -1,8 +1,8 @@
-// code for deleteCustomer function using jQuery
-// function deleteCustomer(customerID) {
-//     let link = "/delete-customer-ajax/";
+// code for deleteSupplier function using jQuery
+// function deleteSupplier(supplierID) {
+//     let link = "/delete-supplier-ajax/";
 //     let data = {
-//         customerID: customerID,
+//         supplierID: supplierID,
 //     };
 
 //     $.ajax({
@@ -11,24 +11,24 @@
 //         data: JSON.stringify(data),
 //         contentType: "application/json; charset=utf-8",
 //         success: function (result) {
-//             deleteRow(customerID);
+//             deleteRow(supplierID);
 //         },
 //     });
 // }
 
-// code for deleteCustomer using regular javascript/xhttp
-function deleteCustomer(customerID) {
+// code for deleteSupplier using regular javascript/xhttp
+function deleteSupplier(supplierID) {
     let data = {
-        customerID: customerID
+        supplierID: supplierID
     };
     
     let xhttp = new XMLHttpRequest();
-    xhttp.open("DELETE", "/delete-customer-ajax", true);
+    xhttp.open("DELETE", "/delete-supplier-ajax", true);
     xhttp.setRequestHeader("Content-type", "application/json");
 
     xhttp.onreadystatechange = () => {
         if (xhttp.readyState == 4 && xhttp.status == 204) {
-            deleteRow(customerID);
+            deleteRow(supplierID);
         } else if (xhttp.readyState == 4 && xhttp.status != 204) {
             console.log("There was an error with the input.")
         }
@@ -37,22 +37,22 @@ function deleteCustomer(customerID) {
     xhttp.send(JSON.stringify(data));
 }
 
-function deleteRow(customerID){
-    let table = document.getElementById("customers-table");
+function deleteRow(supplierID){
+    let table = document.getElementById("suppliers-table");
     for (let i = 0, row; row = table.rows[i]; i++) {
-        if (table.rows[i].getAttribute("data-value") == customerID) {
+        if (table.rows[i].getAttribute("data-value") == supplierID) {
             table.deleteRow(i);
-            deleteDropDownMenu(customerID);
+            deleteDropDownMenu(supplierID);
             break;
         }
     }
     window.location.reload();
 }
 
-function deleteDropDownMenu (customerID) {
+function deleteDropDownMenu (supplierID) {
     let selectMenu = document.getElementById("mySelect")
     for (let i = 0; i < selectMenu.length; i++) {
-        if (Number(selectMenu.options[i].value) === Number(customerID)) {
+        if (Number(selectMenu.options[i].value) === Number(supplierID)) {
             selectMenu[i].remove();
             break;
         }
