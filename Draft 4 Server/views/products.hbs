@@ -1,4 +1,4 @@
-<button class="home-button">Home</button>
+  <button class="home-button">Home</button>
 <script>
   document.querySelector(".home-button").addEventListener("click", function () {
     window.location.href = '/';
@@ -11,16 +11,54 @@
     <li><button class="button" style="background-color: #F77D24;"><a href="suppliers">Suppliers</a></button></li>
     <li><button class="button" style="background-color: #F77D24;"><a href="inventory">Inventory</a></button></li>
     <li><button class="button" style="background-color: #F77D24;"><a href="orders">Orders</a></button></li>
-    <li><button class="button" style="background-color: #F77D24;"><a href="order_products">Order Products</a></button>
+    <li><button class="button" style="background-color: #F77D24;"><a href="orderProducts">Order Products</a></button>
     </li>
     <li><button class="button" style="background-color: #F77D24;"><a href="locations">Locations</a></button></li>
   </ul>
 </nav>
+  
+  <h1>Products</h1>
+  <h2>Database</h2>
+  <!--
+  <table border="1">
+    <tr>
+      <th>Product ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Supplier ID</th>
+      <th>Actions</th>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td>Mountain Bike</td>
+      <td>Sturdy all-terrain bike</td>
+      <td style="text-align: right">350.00</td>
+      <td style="text-align: center">1</td>
+      <td><button>Update</button><button>Delete</button></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td>Road Bike</td>
+      <td>Lightweight and fast road bike</td>
+      <td style="text-align: right">550.00</td>
+      <td style="text-align: center">2</td>
+      <td><button>Update</button><button>Delete</button></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td>Helmet</td>
+      <td>Protective headgear</td>
+      <td style="text-align: right">50.00</td>
+      <td style="text-align: center">3</td>
+      <td><button>Update</button><button>Delete</button></td>
+    </tr>
+  </table><br>
+-->
 
-<h1>Customers</h1>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 {{!-- Create a table --}}
-<table id="customers-table" border="1">
+<table id="products-table" border="1">
 
   {{! Header section }}
   <thead>
@@ -38,72 +76,129 @@
   <tbody>
     {{#each data}}
     <tr>
-      <td>{{this.customerID}}</td>
-      <td>{{this.firstName}}</td>
-      <td>{{this.lastName}}</td>
-      <td>{{this.email}}</td>
-      <td>{{this.address}}</td>
-      <td>{{this.phoneNum}}</td>
-      
-      <td><button onclick="deleteCustomer({{this.customerID}})">Delete</button></td>
+      <td>{{this.productID}}</td>
+      <td>{{this.name}}</td>
+      <td>{{this.description}}</td>
+      <td>{{this.price}}</td>
+      <td>{{this.supplierID}}</td>
+      <td><button onclick="deleteProduct({{this.productID}})">Delete</button></td>
     </tr>
     {{/each}}
   </tbody>
 </table>
-<script src="./js/delete_customer.js"></script>
+<script src="./js/delete_product.js"></script>
 
 
-<h2>Search Using an HTML Form</h2>
-<form id="search-customer-html" method='GET' action='/customers'>
-    <label for="input-lastName">Search by Last Name: </label>
-    <input type="text" name="lastName" id="input-lastName-html-search">
+
+  <section class="flex">
     
-    <input type="submit">
-    <a href='/customers'><button>Reset</button></a>
-</form>
-<p>Search by last name using the field above. Partial last names are OK too!</p>
+    <div class="box">
+    <h2>Add a New Product</h2>
+    <form action="/add-product-ajax"
+          id="add-product-form-ajax"
+          method="post"
+          name="addProduct">
+      <label for="input-name">Name:</label><br>
+      <input id="input-name"
+             name="name"
+             type="text"><br>
+      <label for="input-description">Description:</label><br>
+      <input id="input-description"
+             name="description"
+             type="text"><br>
+      <label for="input-price">Price:</label><br>
+      <input id="input-price"
+             name="price"
+             type="text"><br>
+      <label for="input-supplierID">Supplier:</label><br>
+      <input id="input-supplierID"
+             name="supplierID"
+             type="text"><br>
+      <!--
+      <select id="input-supplierID"
+              name="sId">
+        < Dynamically populated list of suppliers will go here >
+        {{#each suppliers}}
+        <option value="{{this.supplierID}}">{{this.supplierID}}: {{this.name}}</option>
+        {{/each}}
+      </select>-->
+      <br>
+      <input type="submit"
+             value="Add Product">
+    </form>
+</div>
+<script src="./js/add_product.js"></script>
 
-<!-- /views/customers.hbs -->
-<h2>Add a New Customer</h2>
-<form id="add-customer-form-ajax">
-  <label for="input-firstName">First Name: </label>
-  <input type="text" name="input-firstName" id="input-firstName">
-
-  <label for="input-lastName">Last Name: </label>
-  <input type="text" name="input-lastName" id="input-lastName">
-
-  <label for="input-email">Email: </label>
-  <input type="text" name="input-email" id="input-email">
-
-  <label for="input-address">Address: </label>
-  <input type="text" name="input-address" id="input-address">
-
-  <label for="input-phoneNum">Phone Number: </label>
-  <input type="text" name="input-phoneNum" id="input-phoneNum">
-
-  <input type="submit">
-</form>
-{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
-<script src="./js/add_customer.js"></script>
 
 
-<!-- /views/customers.hbs -->
-<h2>Update a Customer's Email</h2>
-<form id="update-customer-form-ajax">
 
-  <label for="input-customerID">Customer ID #: </label>
-  <select name="input-customerID" id="mySelect">
-    <option value="test">Select a Customer's ID</option>
-    {{#each data}}
-      <option value="{{this.customerID}}">{{this.customerID}}</option>
-    {{/each}}
-  </select>
+    <div class="box">
+      <h2>Update a Product</h2>
+      <form action="/updateProduct"
+            id="updateProduct"
+            method="post"
+            name="updateProduct">
+        <label for="pId">Select Product:</label><br>
+        <select id="pId"
+              name="pId">
+          <!-- Dynamically populated list of products will go here-->
+          <option>
+            1: Mountain Bike
+          </option>
+          <option>
+            2: Road Bike
+          </option>
+          <option>
+            3: Helmet
+          </option>
+        </select><br>
+        <label for="name">Name:</label><br>
+        <input id="name2"
+              name="name"
+              type="text"><br>
+        <label for="desc">Description:</label><br>
+        <input id="desc2"
+              name="desc"
+              type="text"><br>
+        <label for="price">Price:</label><br>
+        <input id="price2"
+              name="price"
+              type="text"><br>
+        <label for="sId">Supplier:</label><br>
+        <select id="sId2"
+              name="sId">
+          <!-- Dynamically populated list of suppliers will go here-->
+          <option>
+            1: AllTerrain Co.
+          </option>
+          <option>
+            2: SpeedBikes Inc.
+          </option>
+          <option>
+            3: SafeCyclist Ltd.
+          </option>
+        </select><br>
+        <input type="submit"
+              value="Update Product">
+      </form>
+    </div>
+   
+    <div class="box">
+      <h2>Delete a Product</h2>
+      <form action="/deleteDropDownMenu"
+            id="deleteDropDownMenu"
+            method="post"
+            name="deleteDropDownMenu">
+        <label for="pId">Select Product:</label><br>
+        <select id="pId2"
+              name="pId">
+          {{#each data}}
+      <option value="{{this.productID}}">{{this.productID}} - {{this.name}}</option>
+          {{/each}}
+        </select><br>
+        <input type="submit"
+              value="Delete">
+      </form>
+    </div>
 
-  <label for="input-email">Email: </label>
-  <input type="text" name="input-email" id="input-email-update">
-
-  <input type="submit">
-
-</form>
-<script src="./js/update_customer.js"></script>
-
+  </section>

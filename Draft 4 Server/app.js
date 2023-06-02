@@ -553,6 +553,83 @@ app.put("/put-location-ajax", function (req, res) {
 });
 
 
+
+// ROUTE FOR PRODUCTS PAGE
+app.get("/products", function (req, res) {
+    let query;
+    if (req.query.name === undefined) {
+        query = "SELECT * FROM Products;";
+    } else {
+        query = `SELECT * FROM Customers WHERE productID LIKE "${req.query.productID}%"`;
+    }
+
+    db.pool.query(query, function (error, rows, fields) {
+        res.render("products", { data: rows });
+    });
+});
+
+// DELETE a Product
+app.delete("/delete-product-ajax", function (req, res) {
+    let data = req.body;
+    let productID = parseInt(data.productID);
+    console.log(`Deleting product: ${productID}`);
+    let deleteProduct = `DELETE FROM Products WHERE productID = ?`;
+
+    db.pool.query(deleteProduct, [productID], function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+            res.sendStatus(400);
+        } else {
+            res.sendStatus(204);
+        }
+    });
+});
+
+// DELETE a Product from the dropdown menu
+app.post("/deleteDropDownMenu", function (req, res) {
+    let productID = parseInt(req.body.pId);
+    console.log(`Deleting product: ${productID}`);
+    let deleteProduct = `DELETE FROM Products WHERE productID = ?`;
+
+    db.pool.query(deleteProduct, [productID], function (error, rows, fields) {
+        if (error) {
+            console.log(error);
+            res.sendStatus(400);
+        } else {
+            res.redirect('/');  // Redirect to some page after deletion
+        }
+    });
+});
+
+// Add a Product
+app.post("/add-product-ajax", function (req, res) {
+    let data = req.body;
+    let name = data.name;
+    let description = data.desc;
+    let price = data.price;
+    let supplierID = data.sId;
+    console.log(`Adding product: ${name}`);
+    let addProduct = `INSERT INTO Products (name, description, price, supplierID) VALUES (?, ?, ?, ?)`;
+
+    db.pool.query(addProduct, [name, description, price, supplierID], function (error, result) {
+        if (error) {
+            console.log(error);
+            res.sendStatus(400);
+        } else {
+            let selectProduct = 'SELECT * FROM Products WHERE productID = ?';
+            db.pool.query(selectProduct, [result.insertId], function (error, rows, fields) {
+                if (error) {
+                    console.log(error);
+                    res.sendStatus(400);
+                } else {
+                    res.json(rows);
+                }
+            });
+        }
+    });
+});
+
+
 /*
     LISTENER
 */
