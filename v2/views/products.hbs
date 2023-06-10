@@ -1,0 +1,150 @@
+<section>
+    <h2>Products</h2>
+    <table id="products-table">
+        <thead>
+            <tr>
+                {{#each items.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+                <th>edit</th>
+                <th>delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each items}}
+                <tr data-value="{{this.item_id}}">
+                    <td class="item-id">{{this.item_id}}</td>
+                    <td class="description">{{this.description}}</td>
+                    <td class="type">{{this.type}}</td>
+                    <td class="condition">{{this.condition}}</td>
+                    <td class="price">{{this.price}}</td>
+                    <td class="order-id">{{this.order_id}}</td>
+                    <td><button onclick="updateItem({{this.item_id}})">Edit</button></td>
+                    <td><button onclick="confirmDelete({{this.item_id}})">Delete</button></td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>
+
+<section>
+    <h2>Add Product</h2>
+    <form id="add-item-form" method="post">
+
+        <fieldset>
+
+            <div class="input-container">
+                <label class="required" for="input-description">Description</label>
+                <textarea required name="input-description" id="input-description"></textarea>
+            </div>
+
+            <div class="input-container">
+                <label class="required" for="input-type">Type</label>
+                <select required name="input-type" id="input-type">
+                    <option selected></option>
+                    <option>road bike</option>
+                    <option>mountain bike</option>
+                    <option>eBike</option>
+                    <option>cruiser bike</option>
+                    <option>kid bike</option>
+                    <option>accessory</option>
+                    <option>safety gear</option>
+                </select>
+            </div>
+
+            <div class="input-container">
+                <label class="required" for="input-condition">Condition</label>
+                <select required name="input-condition" id="input-condition">
+                    <option selected></option>
+                    <option>new</option>
+                    <option>used</option>
+                </select>
+            </div>
+
+            <div class="input-container">
+                <label class="required" for="input-price">Price ($)</label>
+                <input required step="0.01" min="0.00" max="9999.99" type="number" name="input-price" id="input-price">
+            </div>
+
+            <div class="input-container">
+                <label for="input-order-id">Order ID</label>
+                <select name="input-order-id" id="input-order-id">
+                    <option selected></option>
+                    {{#each orders}}
+                        <option value="{{this.order_id}}">{{this.order_id}} - {{this.customer}} on {{this.order_date}}</option>
+                    {{/each}}
+                </select>                
+            </div>
+
+        </fieldset>
+
+        <button class="action" id="add-item-button" type="submit">Add Item</button>
+    </form>
+</section>
+
+
+<section>
+    <h2>Update Products</h2>
+    <form id="update-item-form" method="post">
+        
+        <fieldset>
+
+            <div class="input-container">
+                <label for="update-item-id">Item ID</label>
+                <input disabled type="number" name="update-item-id" id="update-item-id" value="">
+            </div>
+
+            <div class="input-container">
+                <label class="required" for="update-description">Description</label>
+                <textarea disabled required name="update-description" id="update-description" value=""></textarea>
+            </div>
+
+            <div class="input-container">
+                <label class="required" for="update-type">Type</label>
+                <select disabled required name="update-type" id="update-type" value="">
+                    <option selected></option>
+                    <option>road bike</option>
+                    <option>mountain bike</option>
+                    <option>eBike</option>
+                    <option>cruiser bike</option>
+                    <option>kid bike</option>
+                    <option>accessory</option>
+                    <option>safety gear</option
+                </select>
+            </div>
+
+            <div class="input-container">
+                <label class="required" for="update-condition">Condition</label>
+                <select disabled required name="update-condition" id="update-condition" value="">
+                    <option selected></option>
+                    <option>new</option>
+                    <option>used</option>
+                </select>
+            </div>
+
+            <div class="input-container">
+                <label class="required" for="update-price">Price ($)</label>
+                <input disabled required step="0.01" min="0.00" max="9999.99" type="number" name="update-price" id="update-price" value="">
+            </div>
+
+            <div class="input-container">
+                <label for="update-order-id">Order ID</label>
+                <select disabled name="update-order-id" id="update-order-id">
+                    <option selected></option>
+                    {{#each orders}}
+                        <option value="{{this.order_id}}">{{this.order_id}} - {{this.customer}} on {{this.order_date}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+        </fieldset>
+
+        <button class="action" id="update-item-button" disabled>Update Item</button>
+    </form>
+</section>
+
+<script src="./js/add_products.js"></script>
+<script src="./js/delete_products.js"></script>
+<script src="./js/update_products.js"></script>

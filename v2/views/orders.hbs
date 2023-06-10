@@ -1,0 +1,139 @@
+<section>
+    <h2>Orders</h2>
+    <table id="orders-table">
+        <thead>
+            <tr>
+                <!-- This should be adjusted
+                {{#each orders.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+                -->
+                <th>order_id</th>
+                <th>product info</th>
+                <th>order_date</th>
+                <th>ship_date</th>
+                <th>note</th>
+                <th>customer info</th>
+                <th>edit</th>
+                <th>delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each orders}}
+                <tr data-value="{{this.order_id}}">
+                    <td class="order-id">{{this.order_id}}</td>
+                    <td class="product-id">{{this.product_id}}</td>
+                    <td class="order-date">{{this.order_date}}</td>
+                    <td class="ship-date">{{this.ship_date}}</td>
+                    <td class="note">{{this.note}}</td>
+                    <td class="customer-id">{{this.customer_id}}</td>
+                    <td><button onclick="updateOrder({{this.order_id}})">Edit</button></td>
+                    <td><button onclick="confirmDelete({{this.order_id}})">Delete</button></td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>
+<section>
+    <h2>Add Order</h2>
+    <form id="add-order-form" method="post">
+
+        <fieldset>
+
+            <div class="input-container">
+                <label class="required" for="input-product-id">Product ID</label>
+                <select required name="input-product-id" id="input-product-id">
+                    <option selected></option>
+                    {{#each products}}
+                        <option value="{{this.product_id}}">{{this.product_id}} - {{this.description}} {{this.type}}</option>
+                    {{/each}}
+                </select>                
+            </div>
+
+            <div class="input-container">
+                <label class="required" for="input-order-date">Order Date</label>
+                <input required type="date" name="input-order-date" id="input-order-date">
+            </div>
+
+            <div class="input-container">
+                <label for="input-ship-date">Ship Date</label>
+                <input type="date" name="input-ship-date" id="input-ship-date">
+            </div>
+
+            <div class="input-container">
+                <label for="input-note">Note</label>
+                <textarea name="input-note" id="input-note"></textarea>
+            </div> 
+
+            <div class="input-container">
+                <label class="required" for="input-customer-id">Customer ID</label>
+                <select required name="input-customer-id" id="input-customer-id">
+                    <option selected></option>
+                    {{#each customers}}
+                        <option value="{{this.customer_id}}">{{this.customer_id}} - {{this.first_name}} {{this.last_name}} ({{this.email}})</option>
+                    {{/each}}
+                </select>                
+            </div>
+
+        </fieldset>
+
+        <button class="action" id="add-order-button" type="submit">Add Order</button>
+    </form>
+</section>
+<section>
+    <h2>Update Order</h2>
+    <form id="update-order-form" method="post">
+        
+        <fieldset>
+
+            <div class="input-container">
+                <label for="update-order-id">Order ID</label>
+                <input disabled type="number" name="update-order-id" id="update-order-id" value="">
+            </div>
+
+            <div class="input-container">
+                <label class="required" for="input-product-id">Product ID</label>
+                <select disabled required name="input-product-id" id="input-product-id">
+                    <option selected></option>
+                    {{#each products}}
+                        <option value="{{this.product_id}}">{{this.product_id}} - {{this.description}} {{this.type}}</option>
+                    {{/each}}
+                </select>                
+            </div>
+
+            <div class="input-container">
+                <label class="required" for="update-order-date">Order Date</label>
+                <input disabled required type="date" name="update-order-date" id="update-order-date" value="">
+            </div>
+
+            <div class="input-container">
+                <label for="update-ship-date">Ship Date</label>
+                <input disabled type="date" name="update-ship-date" id="update-ship-date" value="">
+            </div>
+
+            <div class="input-container">
+                <label for="update-note">Comment</label>
+                <textarea disabled name="update-note" id="update-note" value=""></textarea>
+            </div>
+
+            <div class="input-container">
+                <label class="required" for="update-customer-id">Customer ID</label>
+                <select disabled required name="update-customer-id" id="update-customer-id">
+                    <option selected></option>
+                    {{#each customers}}
+                        <option value="{{this.customer_id}}">{{this.customer_id}} - {{this.first_name}} {{this.last_name}} ({{this.email}})</option>
+                    {{/each}}
+                </select>
+            </div>
+
+        </fieldset>
+
+        <button class="action" id="update-order-button" disabled>Update Order</button>
+    </form>
+</section>
+
+<script src="./js/add_order.js"></script>
+<script src="./js/delete_order.js"></script>
+<script src="./js/update_order.js"></script>

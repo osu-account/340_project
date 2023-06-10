@@ -1,0 +1,100 @@
+<section>
+    <h2>Inventory</h2>
+    <table id="inventory-table">
+        <thead>
+            <tr>
+                {{#each inventoryItems.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+                <th>edit</th>
+                <th>delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each inventoryItems}}
+                <tr data-value="{{this.inventory_item_id}}">
+                    <td class="inventory-item-id">{{this.inventory_item_id}}</td>
+                    <td class="product-id">{{this.item_id}}</td>
+                    <td class="supplier-id">{{this.supplier_id}}</td>
+                    <td><button onclick="updateInventoryItem({{this.inventory_item_id}})">Edit</button></td>
+                    <td><button onclick="confirmDelete({{this.inventory_item_id}})">Delete</button></td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>
+
+<section>
+    <h2>Add Inventory</h2>
+    <form id="add-inventory-form" method="post">
+
+        <fieldset>
+
+            <div class="input-container">
+                <label class="required" for="input-item-id">Inventory Item ID</label>
+                <select required name="input-item-id" id="input-item-id">
+                    <option selected></option>
+                    {{#each inventory}}
+                        <option value="{{this.item_id}}">{{this.item_id}} - {{this.description}}</option>
+                    {{/each}}
+                </select>                
+            </div>
+
+            <div class="input-container">
+                <label class="required" for="input-supplier-id">Supplier ID</label>
+                <select required name="input-supplier-id" id="input-supplier-id">
+                    <option selected></option>
+                    {{#each suppliers}}
+                        <option value="{{this.suppliers_id}}">{{this.suppliers_id}} - {{this.suppliers}}</option>
+                    {{/each}}
+                </select>                
+            </div>
+
+        </fieldset>
+
+        <button class="action" id="add-inventory-button" type="submit">Add Inventory</button>
+    </form>
+</section>
+
+<section>
+    <h2>Update Inventory</h2>
+    <form id="update_inventory-form" method="post">
+        
+        <fieldset>
+
+            <div class="input-container">
+                <label for="update-inventory-id">Inventory ID</label>
+                <input disabled type="number" name="update-inventory-id" id="update-inventory-id" value="">
+            </div>
+
+            <div class="input-container">
+                <label class="required" for="update-item-id">Product ID</label>
+                <select disabled required name="update-item-id" id="update-item-id">
+                    <option selected></option>
+                    {{#each products}}
+                        <option value="{{this.item_id}}">{{this.item_id}} - {{this.description}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+            <div class="input-container">
+                <label class="required" for="update-supplier-id">Suppliers ID</label>
+                <select disabled required name="update-supplier-id" id="update-supplier-id">
+                    <option selected></option>
+                    {{#each suppliers}}
+                        <option value="{{this.supplier_id}}">{{this.supplier_id}} - {{this.supplier}}</option>
+                    {{/each}}
+                </select>
+            </div>
+
+        </fieldset>
+
+        <button class="action" id="update-inventory-button" disabled>Update Movie Item</button>
+    </form>
+</section>
+
+<script src="./js/add_inventory.js"></script>
+<script src="./js/delete_inventory.js"></script>
+<script src="./js/update_inventory.js"></script>

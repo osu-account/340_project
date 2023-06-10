@@ -1,0 +1,96 @@
+<section>
+    <h1>Customers</h1>
+    <table id="customers-table">
+        <thead>
+            <tr>
+                
+                {{#each customers.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+                <th>edit</th>
+                <th>delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each customers}}
+            <tr data-value="{{this.customer_id}}">
+                <td class="customer-id">{{this.customer_id}}</td>
+                <td class="customer-fname">{{this.first_name}}</td>
+                <td class="customer-lname">{{this.last_name}}</td>
+                <td class="customer-email">{{this.email}}</td>
+                <td class="customer-address">{{this.address}}</td>
+                <td class="customer-phone">{{this.phone}}</td>
+                <td><button onclick="updateCustomer({{this.customer_id}})">Edit</button></td>
+                <td><button onclick="confirmDelete({{this.customer_id}})">Delete</button></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>
+<section>
+    <h2>Add Customer</h2>
+    <form id="add-customer-form" method="post">
+        <fieldset>
+            <div class="input-container">
+                <label class="required" for="input-customer-fname">First Name</label>
+                <input required type="text" name="input-customer-fname" id="input-customer-fname">
+            </div>
+            <div class="input-container">
+                <label class="required" for="input-customer-lname">Last Name</label>
+                <input required type="text" name="input-customer-lname" id="input-customer-lname">
+            </div>
+            <div class="input-container">
+                <label class="required" for="input-customer-email">Email</label>
+                <input required type="email" name="input-customer-email" id="input-customer-email">
+            </div>
+            <div class="input-container">
+                <label class="required" for="input-customer-address">Address</label>
+                <input required type="text" name="input-customer-address" id="input-customer-address">
+            </div>
+            <div class="input-container">
+                <label for="input-customer-phone">Phone</label>
+                <input type="tel" name="input-customer-phone" id="input-customer-phone">
+            </div>
+        </fieldset>
+        <button class="action" id="add-customer-button" type="submit">Add Customer</button>
+    </form>
+</section>
+<section>
+    <h2>Update Customer</h2>
+    <form id="update-customer-form" method="post">
+        <fieldset>
+            <div class="input-container">
+                <label class='required' for="update-customer-id">Customer ID</label>
+                <input disabled type="number" name="update-customer-id" id="update-customer-id" value="">
+            </div>
+            <div class="input-container">
+                <label for="update-customer-fname">First Name</label>
+                <input disabled required type="text" name="update-customer-fname" id="update-customer-fname" value="">
+            </div>
+            <div class="input-container">
+                <label for="update-customer-lname">Last Name</label>
+                <input disabled type="text" name="update-customer-lname" id="update-customer-lname" value="">
+            </div>
+            <div class="input-container">
+                <label for="update-customer-email">Email</label>
+                <input disabled type="email" name="update-customer-email" id="update-customer-email" value="">
+            </div>
+            <div class="input-container">
+                <label for="update-customer-address">Address</label>
+                <input disabled type="text" name="update-customer-address" id="update-customer-address" value="">
+            </div>
+            <div class="input-container">
+                <label for="update-customer-phone">Phone</label>
+                <input disabled type="tel" name="update-customer-phone" id="update-customer-phone" value="">
+            </div>
+            
+        </fieldset>
+        <button class="action" id="update-customer-button">Update Order</button>
+    </form>
+</section>
+
+<script src="./js/add_customer.js"></script>
+<script src="./js/delete_customer.js"></script>
+<script src="./js/update_customer.js"></script>

@@ -1,0 +1,174 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto&display=swap');
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family:'Roboto', sans-serif;
+    font-weight: 400;
+    margin: 0 auto;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+header {
+    background-color: rgb(81 132 229);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: space-around;
+}
+
+header h1 a {
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+nav {
+    display: flex;
+    justify-content: center;
+    padding: 0.75rem 0 1.25rem;
+}
+nav a {
+    border-radius: 4px;
+    padding: 0.3rem 0.8rem;
+    background-color: rgb(229 206 39);
+    text-decoration: none;
+    color: black;
+    font-size: 1.3rem;
+    margin: 0 1.2rem 0 0;
+    border: 1px solid rgb(68 112 197);
+}
+
+nav a:hover {
+    background-color: rgb(68 112 197);
+    color: white;
+}
+
+main {
+    height: 100vh;;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+section {
+    border-bottom: 1px solid rgb(184 189 199);
+    padding: 0 0 2.5rem 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+section h2 {
+    margin: 0 auto;
+    padding: 10px;
+}
+
+section table {
+    width: 90%;
+}
+section form {
+    width: 70%;
+}
+button.action {
+    width: 94%;
+    padding: 10px 0;
+    margin: 0 0 0 15px;
+}
+
+main section:nth-child(2) {
+    width: 50%;
+}
+main section:nth-child(3) {
+    width: 50%;
+}
+
+table, th, tr, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 0.5rem;
+    font-size: 1rem;
+    text-align: center;
+}
+
+th {
+    font-size: 1.2rem;
+    background-color: rgb(31 67 135);
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: rgb(247 246 235);
+}
+
+tr:nth-child(odd) {
+    background-color: rgb(255, 255, 255);
+}
+
+
+fieldset {
+    display: flex;
+    border: none;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+label {
+    margin: 0 20px 10px 0;
+    font-weight: bold;
+    display:block;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+input, textarea, select {
+    padding: 10px 5px;
+    border-radius: 4px;
+    border: 1px solid rgb(134 142 155);
+}
+
+.required::after {
+    content: " *";
+    color: red;
+}
+
+textarea {
+    min-width: 50px;
+    min-height: 50px;
+}
+
+input:hover, textarea:hover, select:hover {
+    background-color: azure;
+}
+
+input:disabled, textarea:disabled, select:disabled {
+    background-color: white;
+}
+
+button {
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    background-color: #e5ce27;
+    border: none;
+  }
+
+  button:hover:not(:disabled) {
+    background-color: rgb(31 67 135);
+    color: white;
+  }
