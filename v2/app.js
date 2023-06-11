@@ -44,7 +44,7 @@ app.get('/', function (req, res) {
 
 // CUSTOMERS
 app.get('/customers', function (req, res) {
-  let selectAllCustomersQuery = "SELECT customer_id, first_name, last_name, email, address, phone FROM Customers;";               // Define our query
+  let selectAllCustomersQuery = "SELECT customer_id, first_name, last_name, email, address, phone FROM Customers;";
   db.pool.query(selectAllCustomersQuery, function (error, customers, fields) {
     res.render('customers', { customers: customers });
   })
@@ -52,8 +52,6 @@ app.get('/customers', function (req, res) {
 
 app.post('/add-customer', function (req, res) {
   let data = req.body;
-
-  // Create the query and run it on the database
   const insertCustomerQuery = `
     INSERT INTO Customers (first_name, last_name, email, address, phone)
     VALUES

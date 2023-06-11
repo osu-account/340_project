@@ -1,0 +1,100 @@
+<section>
+    <h2>Suppliers</h2>
+    <table id="suppliers-table">
+        <thead>
+            <tr>
+                {{#each suppliers.[0]}}
+                <th>
+                    {{@key}}
+                </th>
+                {{/each}}
+                <th>edit</th>
+                <th>delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each suppliers}}
+                <tr data-value="{{this.suppliers_id}}">
+                    <td class="suppliers-id">{{this.suppliers_id}}</td>
+                    <td class="name">{{this.name}}</td>
+                    <td class="email">{{this.email}}</td>
+                    <td class="phone">{{this.phone}}</td>
+                    <td class="rep">{{this.rep}}</td>
+                    <td><button onclick="updatesuppliers({{this.suppliers_id}})">Edit</button></td>
+                    <td><button onclick="confirmDelete({{this.suppliers_id}})">Delete</button></td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</section>
+<section>
+    <h2>Add Supplier</h2>
+    <form id="add-suppliers-form" method="post">
+
+        <fieldset>
+
+            <div class="input-container">
+                <label class="required" for="input-name">Name</label>
+                <input required type="text" maxlength="100" name="input-name" id="input-name">
+            </div>
+
+            <div class="input-container">
+                <label class="required" for="input-email">Email</label>
+                <input required type="email" name="input-email" id="input-email">
+            </div>
+
+            <div class="input-container">
+                <label class="required" for="input-phone">Phone</label>
+                <input required type="tel" name="input-phone" id="input-phone">
+            </div>
+
+            <div class="input-container">
+                <label for="input-rep">Rep</label>
+                <input type="text" maxlength="100" name="input-rep" id="input-rep">
+            </div>
+
+        </fieldset>
+
+        <button class="action" id="add-suppliers-button" type="submit">Add Supplier</button>
+    </form>
+</section>
+<section>
+    <h2>Update Supplier</h2>
+    <form id="update-suppliers-form" method="post">
+        
+        <fieldset>
+
+            <div class="input-container">
+                <label for="update-suppliers-id">Supplier ID</label>
+                <input disabled type="number" name="update-suppliers-id" id="update-suppliers-id" value="">
+            </div>
+
+            <div class="input-container">
+                <label class="required" for="update-name">Name</label>
+                <input disabled required type="text" maxlength="100" name="update-name" id="update-name">
+            </div>
+
+            <div class="input-container">
+                <label class="required" for="update-email">Email</label>
+                <input disabled required type="email" name="update-email" id="update-email">
+            </div>
+
+            <div class="input-container">
+                <label class="required" for="update-phone">Phone</label>
+                <input disabled required type="tel" name="update-phone" id="update-phone">
+            </div>
+
+            <div class="input-container">
+                <label for="update-rep">Rep</label>
+                <input disabled type="text" maxlength="100" name="update-rep" id="update-rep">
+            </div>
+
+        </fieldset>
+
+        <button class="action" id="update-suppliers-button" disabled>Update Supplier</button>
+    </form>
+</section>
+
+<script src="./js/add_suppliers.js"></script>
+<script src="./js/delete_suppliers.js"></script>
+<script src="./js/update_suppliers.js"></script>
