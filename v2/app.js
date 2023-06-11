@@ -128,6 +128,48 @@ app.put('/update-customer', function (req, res) {
 
 
 // ORDERS
+// TEST
+// NEW ORDER PAGE FOR NEW DDL SETUP
+app.get('/orders', async function (req, res) {
+  const selectAllOrdersQuery = `
+      SELECT o.o_id AS order_id, 
+          p.p_id AS product_id, 
+          p.description, 
+          p.type,
+          i.i_id AS inventory_id,
+          IF(o.order_date = '0000-00-00', '', DATE_FORMAT(o.order_date, '%Y-%m-%d')) AS order_date, 
+          IF(o.ship_date = '0000-00-00', '', DATE_FORMAT(o.ship_date, '%Y-%m-%d')) AS ship_date, 
+          o.note, 
+          c.c_id AS customer_id,
+          CONCAT(c.first_name, ' ', c.last_name, ' (', c.email, ')') AS customer_name 
+      FROM Orders AS o 
+      JOIN Products AS p ON o.product_id = p.p_id
+      JOIN Inventory AS i ON o.inventory_id = i.i_id
+      JOIN Customers AS c ON o.customer_id = c.c_id 
+      ORDER BY o.o_id`;
+
+  const selectAllItemsQuery = `SELECT p_id AS item_id, description, type FROM Products`;
+
+  const selectAllCustomersQuery = `SELECT c_id AS customer_id, first_name, last_name, email FROM Customers`;
+
+  let orders, products, customers;
+  try {
+      [orders] = await db.pool.query(selectAllOrdersQuery);
+      [products] = await db.pool.query(selectAllItemsQuery);
+      [customers] = await db.pool.query(selectAllCustomersQuery);
+  } catch (error) {
+      // Handle the error
+      console.error(error);
+      res.status(500).send('Error retrieving data from database');
+      return;
+  }
+  res.render('orders', { orders: orders, products: products, customers: customers });
+});
+
+
+/*
+// OLD ORDER PAGE
+
 app.get('/orders', function (req, res) {
   const selectAllOrdersQuery = `SELECT o.order_id, 
     CONCAT(items.item_id, ' - ', items.description, ' ', items.type') AS customer_id FROM Orders AS o JOIN Products AS items ON o.customer_id = items.item_id BY o.order_id,
@@ -149,7 +191,8 @@ app.get('/orders', function (req, res) {
     });
   });
 });
-
+*/
+// END TEST
 app.post('/add-order', function (req, res) {
   let data = req.body;
   const insertOrderQuery = `

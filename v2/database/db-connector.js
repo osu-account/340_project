@@ -17,7 +17,7 @@
 'use strict';
 
 // Getting a mysql instance might fix that issue; moving config to .env
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const dotenv = require('dotenv');
 dotenv.config( { path: '../.env' });
 
@@ -30,4 +30,4 @@ const pool = mysql.createPool({
     database        : process.env.DATABASE
 })
 
-module.exports.pool = pool;
+module.exports.pool = pool.promise();
