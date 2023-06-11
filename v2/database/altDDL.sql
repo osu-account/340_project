@@ -210,13 +210,13 @@ VALUES
 
 -- Orders table
 CREATE OR REPLACE TABLE `Orders` (
-    `o_id` INT(11) AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    `product_id` INT(11) DEFAULT NOT NULL,
-    `inventory_id` INT(11) DEFAULT NOT NULL,
+    `o_id` INT(11) AUTO_INCREMENT NOT NULL,
+    `product_id` INT(11) NOT NULL,
+    `inventory_id` INT(11) NOT NULL,
     `order_date` DATE NOT NULL,
     `ship_date` DATE NULL,
-    `note` VARCHAR(200) DEFAULT NULL,
-    `customer_id` INT(11) DEFAULT NOT NULL,
+    `note` VARCHAR(200) NULL,
+    `customer_id` INT(11) NOT NULL,
     PRIMARY KEY (o_id),
     FOREIGN KEY (product_id) REFERENCES Products(p_id),
     FOREIGN KEY (inventory_id) REFERENCES Inventory(i_id),
