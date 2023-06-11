@@ -7,6 +7,68 @@
   Curry, M. and Safonte, D. 2023
   https://github.com/osu-cs340-ecampus/nodejs-starter-app
 */
+
+let inputOrderDate = document.getElementById("input-order-date");
+let inputShipDate = document.getElementById("input-ship-date");
+let inputNote = document.getElementById("input-note");
+let inputCustomerId = document.getElementById("input-customer-id");
+let inputProductId = document.getElementById("input-product-id");
+
+document.getElementById("submit").addEventListener("click", function() {
+  // Get the values from the form fields
+  let orderDateValue = inputOrderDate.value;
+  let shipDateValue = inputShipDate.value;
+  let noteValue = inputNote.value;
+  let customerIdValue = inputCustomerId.value;
+  let productIdValue = inputProductId.value;
+
+  let data = {
+    orderDate: orderDateValue,
+    shipDate: shipDateValue,
+    note: noteValue,
+    customerId: customerIdValue,
+    productId: productIdValue
+  };
+
+  let xhttp = new XMLHttpRequest();
+  xhttp.open("POST", "/add-order", true);
+  xhttp.setRequestHeader("Content-Type", "application/json");
+
+  xhttp.onreadystatechange = () => {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      // Add the new data to the table (see helper function below)
+      addRowToTable(xhttp.response, data);
+
+      // Clear the input fields for another transaction
+      inputOrderDate.value = "";
+      inputShipDate.value = "";
+      inputNote.value = "";
+      inputCustomerId.value = "";
+      inputProductId.value = "";
+    }
+  };
+
+  xhttp.send(JSON.stringify(data));
+});
+
+function addRowToTable(orderId, data) {
+  let table = document.getElementById("orders-table");
+
+  let newRow = table.insertRow();
+  newRow.innerHTML = `
+    <td>${orderId}</td>
+    <td>${data.orderDate}</td>
+    <td>${data.shipDate}</td>
+    <td>${data.note}</td>
+    <td>${data.customerId}</td>
+    <td>${data.productId}</td>
+  `;
+}
+
+
+
+/*
+// OLD SAVE
 // Get the objects we need to modify
 let addOrderForm = document.getElementById('add-order-form');
 
@@ -128,4 +190,4 @@ addRowToTable = (data) => {
     
     // Add the row to the table
     tbody.appendChild(row);
-}
+}*/
