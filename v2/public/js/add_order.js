@@ -14,7 +14,7 @@ let inputNote = document.getElementById("input-note");
 let inputCustomerId = document.getElementById("input-customer-id");
 let inputProductId = document.getElementById("input-product-id");
 
-document.getElementById("submit").addEventListener("click", function() {
+document.getElementById("add-order-button").addEventListener("click", function() {
   // Get the values from the form fields
   let orderDateValue = inputOrderDate.value;
   let shipDateValue = inputShipDate.value;

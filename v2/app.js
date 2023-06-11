@@ -163,7 +163,37 @@ app.get('/orders', async function (req, res) {
       res.status(500).send('Error retrieving data from database');
       return;
   }
+
+  // Render the 'orders' page and pass in the orders, products, and customers data
   res.render('orders', { orders: orders, products: products, customers: customers });
+});
+
+// ADD
+app.post('/add-order', async function (req, res) {
+  // Prepare SQL query
+  const insertOrderQuery = `
+      INSERT INTO Orders (product_id, inventory_id, order_date, ship_date, note, customer_id) 
+      VALUES (?, ?, ?, ?, ?, ?)
+  `;
+
+  // Extract fields from request body
+  let { productId, inventoryId, orderDate, shipDate, note, customerId } = req.body;
+
+  // Provide default values for date fields if they are not present
+  orderDate = orderDate || null;
+  shipDate = shipDate || null;
+
+  try {
+      // Execute the query with the provided data
+      const [result] = await db.pool.query(insertOrderQuery, [productId, inventoryId, orderDate, shipDate, note, customerId]);
+
+      // If successful, send back the inserted id
+      res.json({ orderId: result.insertId });
+  } catch (error) {
+      // Log the error and send a server error status code
+      console.error(error);
+      res.status(500).send('Error inserting data into database');
+  }
 });
 
 
@@ -191,8 +221,7 @@ app.get('/orders', function (req, res) {
     });
   });
 });
-*/
-// END TEST
+
 app.post('/add-order', function (req, res) {
   let data = req.body;
   const insertOrderQuery = `
@@ -229,6 +258,8 @@ app.post('/add-order', function (req, res) {
     }
   });
 });
+*/
+// END TEST
 
 app.delete('/delete-order', function (req, res) {
 

@@ -3,45 +3,38 @@
     <table id="orders-table">
         <thead>
             <tr>
-                
-                {{#each orders.[0]}}
-                <th>
-                    {{@key}}
-                </th>
-                {{/each}}
-                <!--
-                <th>order_id</th>
-                <th>product info</th>
-                <th>order_date</th>
-                <th>ship_date</th>
-                <th>note</th>
-                <th>customer info</th>
-                <th>edit</th>
-                <th>delete</th>-->
+                <th>Order ID</th>
+                <th>Product</th>
+                <th>Order Date</th>
+                <th>Ship Date</th>
+                <th>Note</th>
+                <th>Customer</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
             {{#each orders}}
                 <tr data-value="{{this.order_id}}">
                     <td class="order-id">{{this.order_id}}</td>
-                    <td class="product-id">{{this.product_id}}</td>
+                    <td class="product">{{this.description}} {{this.type}}</td>
                     <td class="order-date">{{this.order_date}}</td>
                     <td class="ship-date">{{this.ship_date}}</td>
                     <td class="note">{{this.note}}</td>
-                    <td class="customer-id">{{this.customer_id}}</td>
+                    <td class="customer">{{this.customer_name}}</td>
                     <td><button onclick="updateOrder({{this.order_id}})">Edit</button></td>
                     <td><button onclick="confirmDelete({{this.order_id}})">Delete</button></td>
                 </tr>
             {{/each}}
         </tbody>
+
     </table>
 </section>
 <section>
     <h2>Add Order</h2>
-    <form id="add-order-form" method="post">
+    <form id="add-order-form" method="post" action="/add-order">
 
         <fieldset>
-
             <div class="input-container">
                 <label class="required" for="input-product-id">Product ID</label>
                 <select required name="input-product-id" id="input-product-id">
