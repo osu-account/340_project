@@ -88,6 +88,8 @@ addRowToTable = (data) => {
     let priceCell = document.createElement("TD");
     let supplierIDCell = document.createElement("TD");
 
+    let deleteCell = document.createElement("TD");
+
     // Fill the cells with correct data
     productIDCell.innerText = newRow.productID;
     nameCell.innerText = newRow.name;
@@ -95,12 +97,20 @@ addRowToTable = (data) => {
     priceCell.innerText = newRow.price;
     supplierIDCell.innerText = newRow.supplierID;
 
+    deleteCell = document.createElement("button");
+    deleteCell.innerHTML = "Delete";
+    deleteCell.onclick = function() {
+        deleteProduct(newRow.productID);
+    };
+
     // Add the cells to the row 
     row.appendChild(productIDCell);
     row.appendChild(nameCell);
     row.appendChild(descriptionCell);
     row.appendChild(priceCell);
     row.appendChild(supplierIDCell);
+
+    row.setAttribute('data-value', newRow.productID);
     
     // Add the row to the table
     currentTable.appendChild(row);

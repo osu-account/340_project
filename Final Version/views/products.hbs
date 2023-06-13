@@ -28,43 +28,6 @@
   
   <h1>Products</h1>
   <h2>Database</h2>
-  <!--
-  <table border="1">
-    <tr>
-      <th>Product ID</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Supplier ID</th>
-      <th>Actions</th>
-    </tr>
-    <tr>
-      <td style="text-align: center">1</td>
-      <td>Mountain Bike</td>
-      <td>Sturdy all-terrain bike</td>
-      <td style="text-align: right">350.00</td>
-      <td style="text-align: center">1</td>
-      <td><button>Update</button><button>Delete</button></td>
-    </tr>
-    <tr>
-      <td style="text-align: center">2</td>
-      <td>Road Bike</td>
-      <td>Lightweight and fast road bike</td>
-      <td style="text-align: right">550.00</td>
-      <td style="text-align: center">2</td>
-      <td><button>Update</button><button>Delete</button></td>
-    </tr>
-    <tr>
-      <td style="text-align: center">3</td>
-      <td>Helmet</td>
-      <td>Protective headgear</td>
-      <td style="text-align: right">50.00</td>
-      <td style="text-align: center">3</td>
-      <td><button>Update</button><button>Delete</button></td>
-    </tr>
-  </table><br>
--->
-
 
 {{!-- Create a table --}}
 <table id="products-table" border="1">
@@ -90,6 +53,7 @@
       <td>{{this.description}}</td>
       <td>{{this.price}}</td>
       <td>{{this.supplierID}}</td>
+      
       <td><button onclick="deleteProduct({{this.productID}})">Delete</button></td>
     </tr>
     {{/each}}
@@ -99,47 +63,32 @@
 
 
 
-  <section class="flex">
-    
-    <div class="box">
-    <h2>Add a New Product</h2>
-    <form action="/add-product-ajax"
+<section class="flex">
+
+<div class="box">
+  <!-- /views/customers.hbs -->
+  <h2>Add a New Product</h2>
+  <form action="/add-product-ajax"
           id="add-product-form-ajax"
           method="post"
           name="addProduct">
-      <label for="input-name">Name:</label><br>
-      <input id="input-name"
-             name="name"
-             type="text"><br>
-      <label for="input-description">Description:</label><br>
-      <input id="input-description"
-             name="description"
-             type="text"><br>
-      <label for="input-price">Price:</label><br>
-      <input id="input-price"
-             name="price"
-             type="text"><br>
-      <label for="input-supplierID">Supplier:</label><br>
-      <input id="input-supplierID"
-             name="supplierID"
-             type="text"><br>
-      <!--
-      <select id="input-supplierID"
-              name="sId">
-        < Dynamically populated list of suppliers will go here >
-        {{#each suppliers}}
-        <option value="{{this.supplierID}}">{{this.supplierID}}: {{this.name}}</option>
-        {{/each}}
-      </select>-->
-      <br>
-      <input type="submit"
-             value="Add Product">
-    </form>
+    <label for="input-name">Product Name: </label><br>
+    <input type="text" name="input-name" id="input-name"><br>
+
+    <label for="input-description">Description: </label><br>
+    <input type="text" name="input-description" id="input-description"><br>
+
+    <label for="input-price">Price: </label><br>
+    <input type="text" name="input-price" id="input-price"><br>
+
+    <label for="input-supplierID">Supplier ID #: </label><br>
+    <input type="text" name="input-supplierID" id="input-supplierID"><br>
+
+    <input type="submit">
+  </form>
 </div>
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
 <script src="./js/add_product.js"></script>
-
-
-
 
     <div class="box">
       <h2>Update a Product</h2>

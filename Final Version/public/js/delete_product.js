@@ -8,12 +8,8 @@
   https://github.com/osu-cs340-ecampus/nodejs-starter-app
 */
 
-// code for deleteProducts using regular javascript/xhttp
-
-
+// code for deleteProduct using regular javascript/xhttp
 function deleteProduct(productID) {
-    console.log(`Deleting product: ${productID}`); // test
-
     let data = {
         productID: productID
     };

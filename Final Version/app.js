@@ -155,25 +155,20 @@ app.get("/products", function (req, res) {
 // ADD a Product (AJAX)
 app.post("/add-product-ajax", function (req, res) {
     let data = req.body;
-    let name = data.name;
-    let description = data.desc;
-    let price = data.price;
-    let supplierID = data.sId;
-    console.log(`Adding product: ${name}`);
-    let addProduct = `INSERT INTO Products (name, description, price, supplierID) VALUES (?, ?, ?, ?)`;
-
-    db.pool.query(addProduct, [name, description, price, supplierID], function (error, result) {
+    console.log(data);
+    let query1 = `INSERT INTO Products (name, description, price, supplierID) VALUES ("${data.name}", "${data.description}", "${data.price}", "${data.supplierID}")`;
+    db.pool.query(query1, function (error, rows, fields) {
         if (error) {
             console.log(error);
             res.sendStatus(400);
         } else {
-            let selectProduct = 'SELECT * FROM Products WHERE productID = ?';
-            db.pool.query(selectProduct, [result.insertId], function (error, rows, fields) {
+            let query2 = `SELECT Products.productID, Products.name, Products.description, Products.price, Products.supplierID FROM Products;`;
+            db.pool.query(query2, function (error, rows, fields) {
                 if (error) {
                     console.log(error);
                     res.sendStatus(400);
                 } else {
-                    res.json(rows);
+                    res.send(rows);
                 }
             });
         }
@@ -184,7 +179,6 @@ app.post("/add-product-ajax", function (req, res) {
 app.delete("/delete-product-ajax", function (req, res) {
     let data = req.body;
     let productID = parseInt(data.productID);
-    console.log(`Deleting product: ${productID}`);
     let deleteProduct = `DELETE FROM Products WHERE productID = (?)`;
 
     db.pool.query(deleteProduct, [productID], function (error, rows, fields) {
