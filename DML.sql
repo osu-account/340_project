@@ -1,10 +1,12 @@
 /*
     OSU CS340 Intro to Databases (Spring 2023)
-    Project Step 3 Draft Version: Design HTML Interface + DML SQL
+    Portland Cycling Specialties Project
 
     Team 86, Schema-Teama
     Chris Hall and John McCormick
-    2023-05-11
+    2023-05-04
+
+    Updated 2023-06-12
 */
 
 

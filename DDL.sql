@@ -1,13 +1,12 @@
 /*
     OSU CS340 Intro to Databases (Spring 2023)
-    Project Step 2 Draft: Normalized Schema + DDL with
-    Sample Data
+    Portland Cycling Specialties Project
 
     Team 86, Schema-Teama
     Chris Hall and John McCormick
     2023-05-04
 
-    Updated 2023-05-11
+    Updated 2023-06-12
 */
 
 /* SET CHECKS AND DROPS */
@@ -59,12 +58,12 @@ CREATE OR REPLACE TABLE `Inventory` (
 );
 
 CREATE OR REPLACE TABLE `Orders` (
-    `orderID` int NOT NULL,
+    `orderID` int NOT NULL AUTO_INCREMENT,
     `customerID` int NOT NULL,
     `orderDate` date NOT NULL,
     `total` decimal(10,2) NOT NULL,
-    UNIQUE KEY `orderID` (`orderID`),
     PRIMARY KEY (`orderID`),
+    UNIQUE KEY `orderID` (`orderID`),
     FOREIGN KEY (`customerID`) REFERENCES `Customers`(`customerID`) ON DELETE CASCADE
 );
 
@@ -111,22 +110,50 @@ VALUES
     'John',
     'Doe',
     'j.doe@email.com',
-    '123 Main St, Portland',
-    '5035555555'
+    '123 Main St, Portland, OR 98427',
+    '503-555-5555'
 ),
 (
     'Jane',
     'Doe',
     'jane.d@email.com',
-    '456 Elm St, Portland',
-    '5035555556'
+    '456 Elm St, Portland, OR 97323',
+    '503-555-5556'
 ),
 (
     'Bob',
     'Dole',
     'b.dole@email.com',
-    '789 Oak St, Portland',
-    '5035555557'
+    '789 Oak St, Portland, OR 99877',
+    '503-555-5557'
+),
+(
+    'Janetta',
+    'Beltran',
+    'janetta6332@eml.cc',
+    '404 Cinder Summit Village, Tice, ID 04340',
+    '273-619-9128'
+),
+(
+    'Derrick',
+    'Baker',
+    'derrick_baker7303@fastmail.jp',
+    '216 Cloud Estate, Mill Valley, OR 36352',
+    '255-639-1250'
+),
+(
+    'Fredric',
+    'Wade',
+    'wade1219@mm.st',
+    '814 Lazy Terrace, Leesburg village, NV 27151',
+    '328-069-6800'
+),
+(
+    'Dwain',
+    'Plateel',
+    'plateel5850@fastmail.es',
+    'P.O. Box 33434, Cuartelez, PA 03116',
+    '257-011-0521'
 );
 
 /* -- INTO Products */
