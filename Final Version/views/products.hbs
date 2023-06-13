@@ -119,18 +119,18 @@
       <input id="input-price"
              name="price"
              type="text"><br>
-      <label for="input-supplierID">Supplier:</label><br>
+       <!--<label for="input-supplierID">Supplier:</label><br>
       <input id="input-supplierID"
              name="supplierID"
              type="text"><br>
-      <!--
+     -->
       <select id="input-supplierID"
-              name="sId">
+              name="supplierID">
         < Dynamically populated list of suppliers will go here >
         {{#each suppliers}}
         <option value="{{this.supplierID}}">{{this.supplierID}}: {{this.name}}</option>
         {{/each}}
-      </select>-->
+      </select>
       <br>
       <input type="submit"
              value="Add Product">

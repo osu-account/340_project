@@ -18,17 +18,27 @@ CREATE OR REPLACE TABLE `Customers` (
     `customerID` int NOT NULL AUTO_INCREMENT,
     `firstName` varchar(45) NOT NULL,
     `lastName` varchar(45) NOT NULL,
-    `email` varchar (45) NOT NULL,
-    `address` varchar(45) NOT NULL,
-    `phoneNum` varchar(45) NOT NULL,
+    `email` varchar (100) NOT NULL,
+    `address` varchar(200) NOT NULL,
+    `phoneNum` varchar(20) NOT NULL,
     UNIQUE KEY `customerID` (`customerID`),
     PRIMARY KEY (`customerID`)
 );
 
+CREATE OR REPLACE TABLE `Suppliers` (
+    `supplierID` int NOT NULL AUTO_INCREMENT,
+    `name` varchar(100) NOT NULL,
+    `email` varchar(100) NOT NULL,
+    `phone` varchar(20) NOT NULL,
+    `representativeName` varchar(100) NOT NULL,
+    UNIQUE KEY `supplierID` (`supplierID`),
+    PRIMARY KEY (`supplierID`)
+);
+
 CREATE OR REPLACE TABLE `Products` (
     `productID` int NOT NULL AUTO_INCREMENT,
-    `name` varchar(45) NOT NULL,
-    `description` varchar(45),
+    `name` varchar(100) NOT NULL,
+    `description` varchar(200),
     `price` decimal(10,2) NOT NULL,
     `supplierID` int NOT NULL,
     UNIQUE KEY `productID` (`productID`),
@@ -36,14 +46,13 @@ CREATE OR REPLACE TABLE `Products` (
     FOREIGN KEY (`supplierID`) REFERENCES `Suppliers`(`supplierID`) ON DELETE CASCADE
 );
 
-CREATE OR REPLACE TABLE `Suppliers` (
-    `supplierID` int NOT NULL AUTO_INCREMENT,
-    `name` varchar(45) NOT NULL,
-    `email` varchar(45) NOT NULL,
-    `phone` varchar(45) NOT NULL,
-    `representativeName` varchar(45) NOT NULL,
-    UNIQUE KEY `supplierID` (`supplierID`),
-    PRIMARY KEY (`supplierID`)
+CREATE OR REPLACE TABLE `Locations` (
+    `locationID` int NOT NULL AUTO_INCREMENT,
+    `name` varchar(100) NOT NULL,
+    `address` varchar(200) NOT NULL,
+    `phone` varchar(20) NOT NULL,
+    UNIQUE KEY `locationID` (`locationID`),
+    PRIMARY KEY (`locationID`)
 );
 
 CREATE OR REPLACE TABLE `Inventory` (
@@ -68,21 +77,12 @@ CREATE OR REPLACE TABLE `Orders` (
 );
 
 CREATE OR REPLACE TABLE `OrderProducts` (
-    `orderID` int NOT NULL AUTO_INCREMENT,
+    `orderID` int NOT NULL,
     `productID` int NOT NULL,
     `quantity` int NOT NULL,
     `price` decimal(10,2) NOT NULL,
     FOREIGN KEY (`orderID`) REFERENCES `Orders` (`orderID`) ON DELETE CASCADE,
     FOREIGN KEY (`productID`) REFERENCES `Products` (`productID`) ON DELETE CASCADE
-);
-
-CREATE OR REPLACE TABLE `Locations` (
-    `locationID` int NOT NULL AUTO_INCREMENT,
-    `name` varchar(45) NOT NULL,
-    `address` varchar(45) NOT NULL,
-    `phone` varchar(45) NOT NULL,
-    UNIQUE KEY `locationID` (`locationID`),
-    PRIMARY KEY (`locationID`)
 );
 
 /*
@@ -99,11 +99,11 @@ DESCRIBE Locations;
 /* INSERT SAMPLE DATA */
 /* -- INTO Customers */
 INSERT INTO `Customers` (
-    firstName,
-    lastName,
-    email,
-    address,
-    phoneNum
+    `firstName`,
+    `lastName`,
+    `email`,
+    `address`,
+    `phoneNum`
 )
 VALUES 
 (
@@ -156,29 +156,6 @@ VALUES
     '257-011-0521'
 );
 
-/* -- INTO Products */
-INSERT INTO `Products` (
-    name,
-    description,
-    price
-)
-VALUES 
-(
-    'Mountain Bike',
-    'Sturdy all-terrain bike',
-    '350.00'
-),
-(
-    'Road Bike',
-    'Lightweight and fast road bike',
-    '550.00'
-),
-(
-    'Helmet',
-    'Protective headgear',
-    '50.00'
-);
-
 /* -- INTO Suppliers */
 INSERT INTO `Suppliers` (
     name,
@@ -206,29 +183,6 @@ VALUES
     'Robert'
 );
 
-/* -- INTO Inventory */
-INSERT INTO `Inventory` (
-    productID,
-    locationID,
-    inStockQuantity
-)
-VALUES 
-(
-    '1',
-    '1',
-    '10'
-),
-(
-    '2',
-    '1',
-    '8'
-),
-(
-    '3',
-    '1',
-    '20'
-);
-
 /* -- INTO Locations */
 INSERT INTO `Locations` (
     name,
@@ -252,6 +206,61 @@ VALUES
     '5035553344'
 );
 
+/* -- INTO Products */
+INSERT INTO `Products` (
+    name,
+    description,
+    price,
+    supplierID
+)
+VALUES 
+(
+    'Mountain Bike',
+    'Sturdy all-terrain bike',
+    '350.00',
+    1
+),
+(
+    'Road Bike',
+    'Lightweight and fast road bike',
+    '550.00',
+    2
+),
+(
+    'Helmet',
+    'Protective headgear',
+    '50.00',
+    3
+);
+
+/* -- INTO Inventory */
+INSERT INTO `Inventory` (
+    productID,
+    locationID,
+    inStockQuantity
+)
+VALUES 
+(
+    1,
+    1,
+    15
+),
+(
+    1,
+    2,
+    10
+),
+(
+    2,
+    1,
+    5
+),
+(
+    3,
+    3,
+    25
+);
+
 /* -- INTO Orders */
 INSERT INTO `Orders` (
     customerID,
@@ -260,17 +269,17 @@ INSERT INTO `Orders` (
 )
 VALUES 
 (
-    '1',
-    '20230501',
-    '700.00'
+    1,
+    '2023-05-01',
+    '550.00'
 ),
 (
-    '2',
-    '20230502',
-    '600.00'
+    2,
+    '2023-05-02',
+    '50.00'
 ),
 (
-    '3',
+    3,
     '2023-05-03',
     '400.00'
 );
@@ -284,30 +293,29 @@ INSERT INTO `OrderProducts` (
 )
 VALUES 
 (
-    '1',
-    '1',
-    '1',
-    '350.00'
-),
-(
-    '1',
-    '3',
-    '1',
-    '50.00'
-),
-(
-    '2',
-    '2',
-    '1',
+    1,
+    2,
+    1,
     '550.00'
 ),
 (
-    '3',
-    '3',
-    '2',
-    '100.00'
+    2,
+    3,
+    1,
+    '50.00'
+),
+(
+    3,
+    1,
+    1,
+    '350.00'
+),
+(
+    3,
+    3,
+    1,
+    '50.00'
 );
 
-/* SET CHECKS AND DROPS */
-SET FOREIGN_KEY_CHECKS = 1;
 COMMIT;
+SET FOREIGN_KEY_CHECKS=1;

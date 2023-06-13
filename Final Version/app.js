@@ -158,7 +158,7 @@ app.post("/add-product-ajax", function (req, res) {
     let name = data.name;
     let description = data.desc;
     let price = data.price;
-    let supplierID = data.sId;
+    let supplierID = data.supplierID;
     console.log(`Adding product: ${name}`);
     let addProduct = `INSERT INTO Products (name, description, price, supplierID) VALUES (?, ?, ?, ?)`;
 
