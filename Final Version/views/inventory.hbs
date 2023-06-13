@@ -1,0 +1,92 @@
+  {{!-- CITATIONS
+
+  Adapted from nodejs starter app.
+  This application was adapted from starter code provided by Dr. Curry and Prof. Safonte
+  for the CS 340 course at Oregon State University.
+  Curry, M. and Safonte, D. 2023
+  https://github.com/osu-cs340-ecampus/nodejs-starter-app
+  --}}
+  
+  <button class="home-button">Home</button>
+<script>
+  document.querySelector(".home-button").addEventListener("click", function () {
+    window.location.href = '/';
+  });
+</script>
+<nav class="topNav">
+  <ul>
+    <li><button class="button"><a href="customers">Customers</a></button></li>
+    <li><button class="button"><a href="products">Products</a></button></li>
+    <li><button class="button"><a href="suppliers">Suppliers</a></button></li>
+    <li><button class="button"><a href="inventory">Inventory</a></button></li>
+    <li><button class="button"><a href="orders">Orders</a></button></li>
+    <li><button class="button"><a href="order_products">Order Products</a></button>
+    </li>
+    <li><button class="button"><a href="locations">Locations</a></button></li>
+  </ul>
+</nav>
+
+<h1>Inventory</h1>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+{{!-- Create a table --}}
+<table id="inventory-table" border="1">
+
+  {{! Header section }}
+  <thead>
+    <tr>
+      {{#each data.[0]}}
+      <th>
+        {{@key}}
+      </th>
+      {{/each}}
+      <th>delete</th>
+    </tr>
+  </thead>
+
+  {{!-- Body section --}}
+  <tbody>
+    {{#each data}}
+    <tr>
+      <td>{{this.inventoryID}}</td>
+      <td>{{this.productID}}</td>
+      <td>{{this.locationID}}</td>
+      <td>{{this.inStockQuantity}}</td>
+      
+      <td><button onclick="deleteInventory({{this.inventoryID}})">Delete</button></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+<script src="./js/delete_inventory.js"></script>
+
+
+<h2>Search Inventory by Product ID</h2>
+<form id="search-inventory-html" method='GET' action='/inventory'>
+    <label for="input-productID">Search by Product ID: </label>
+    <input type="text" name="productID" id="input-productID-html-search">
+    
+    <input type="submit">
+    <a href='/inventory'><button>Reset</button></a>
+</form>
+<p>Search by product ID using the field above.</p>
+
+
+<!-- /views/inventory.hbs -->
+<h2>Update Inventory In-Stock Quantity for a Product</h2>
+<form id="update-inventory-form-ajax">
+
+  <label for="input-inventoryID">Inventory ID #: </label>
+  <select name="input-inventoryID" id="mySelect">
+    <option value="test">Select an Inventory ID</option>
+    {{#each data}}
+      <option value="{{this.inventoryID}}">{{this.inventoryID}}</option>
+    {{/each}}
+  </select>
+
+  <label for="input-inStockQuantity">Quantity: </label>
+  <input type="text" name="input-inStockQuantity" id="input-inStockQuantity-update">
+
+  <input type="submit">
+
+</form>
+<script src="./js/update_inventory.js"></script>

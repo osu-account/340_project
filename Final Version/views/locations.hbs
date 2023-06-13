@@ -1,0 +1,109 @@
+  {{!-- CITATIONS
+
+  Adapted from nodejs starter app.
+  This application was adapted from starter code provided by Dr. Curry and Prof. Safonte
+  for the CS 340 course at Oregon State University.
+  Curry, M. and Safonte, D. 2023
+  https://github.com/osu-cs340-ecampus/nodejs-starter-app
+  --}}
+  
+  <button class="home-button">Home</button>
+<script>
+  document.querySelector(".home-button").addEventListener("click", function () {
+    window.location.href = '/';
+  });
+</script>
+<nav class="topNav">
+  <ul>
+    <li><button class="button"><a href="customers">Customers</a></button></li>
+    <li><button class="button"><a href="products">Products</a></button></li>
+    <li><button class="button"><a href="suppliers">Suppliers</a></button></li>
+    <li><button class="button"><a href="inventory">Inventory</a></button></li>
+    <li><button class="button"><a href="orders">Orders</a></button></li>
+    <li><button class="button"><a href="order_products">Order Products</a></button>
+    </li>
+    <li><button class="button"><a href="locations">Locations</a></button></li>
+  </ul>
+</nav>
+
+<h1>Locations</h1>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+{{!-- Create a table --}}
+<table id="locations-table" border="1">
+
+  {{! Header section }}
+  <thead>
+    <tr>
+      {{#each data.[0]}}
+      <th>
+        {{@key}}
+      </th>
+      {{/each}}
+      <th>delete</th>
+    </tr>
+  </thead>
+
+  {{!-- Body section --}}
+  <tbody>
+    {{#each data}}
+    <tr>
+      <td>{{this.locationID}}</td>
+      <td>{{this.name}}</td>
+      <td>{{this.address}}</td>
+      <td>{{this.phone}}</td>
+      
+      <td><button onclick="deleteLocation({{this.locationID}})">Delete</button></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+<script src="./js/delete_location.js"></script>
+
+
+<h2>Search Locations</h2>
+<form id="search-location-html" method='GET' action='/locations'>
+    <label for="input-name">Search Locations by Name: </label>
+    <input type="text" name="name" id="input-name-html-search">
+    
+    <input type="submit">
+    <a href='/locations'><button>Reset</button></a>
+</form>
+<p>Search Locations by Name using the field above. Partial last names are OK too!</p>
+
+<!-- /views/locations.hbs -->
+<h2>Add a New Location</h2>
+<form id="add-location-form-ajax">
+  <label for="input-name">Name: </label>
+  <input type="text" name="input-name" id="input-name">
+
+  <label for="input-address">Address: </label>
+  <input type="text" name="input-address" id="input-address">
+
+  <label for="input-phone">Phone Number: </label>
+  <input type="text" name="input-phone" id="input-phone">
+
+  <input type="submit">
+</form>
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_location.js"></script>
+
+
+<!-- /views/locations.hbs -->
+<h2>Update a Location's Phone Number</h2>
+<form id="update-location-form-ajax">
+
+  <label for="input-locationID">Location ID #: </label>
+  <select name="input-locationID" id="mySelect">
+    <option value="test">Select a Location's ID</option>
+    {{#each data}}
+      <option value="{{this.locationID}}">{{this.locationID}}</option>
+    {{/each}}
+  </select>
+
+  <label for="input-phone">Phone Number: </label>
+  <input type="text" name="input-phone" id="input-phone-update">
+
+  <input type="submit">
+
+</form>
+<script src="./js/update_location.js"></script>

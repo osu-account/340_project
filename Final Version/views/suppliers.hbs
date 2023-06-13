@@ -1,0 +1,114 @@
+  {{!-- CITATIONS
+
+  Adapted from nodejs starter app.
+  This application was adapted from starter code provided by Dr. Curry and Prof. Safonte
+  for the CS 340 course at Oregon State University.
+  Curry, M. and Safonte, D. 2023
+  https://github.com/osu-cs340-ecampus/nodejs-starter-app
+  --}}
+  
+  <button class="home-button">Home</button>
+<script>
+  document.querySelector(".home-button").addEventListener("click", function () {
+    window.location.href = '/';
+  });
+</script>
+<nav class="topNav">
+  <ul>
+    <li><button class="button"><a href="customers">Customers</a></button></li>
+    <li><button class="button"><a href="products">Products</a></button></li>
+    <li><button class="button"><a href="suppliers">Suppliers</a></button></li>
+    <li><button class="button"><a href="inventory">Inventory</a></button></li>
+    <li><button class="button"><a href="orders">Orders</a></button></li>
+    <li><button class="button"><a href="order_products">Order Products</a></button>
+    </li>
+    <li><button class="button"><a href="locations">Locations</a></button></li>
+  </ul>
+</nav>
+
+<h1>Suppliers</h1>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+{{!-- Create a table --}}
+<table id="suppliers-table" border="1">
+
+  {{! Header section }}
+  <thead>
+    <tr>
+      {{#each data.[0]}}
+      <th>
+        {{@key}}
+      </th>
+      {{/each}}
+      <th>delete</th>
+    </tr>
+  </thead>
+
+  {{!-- Body section --}}
+  <tbody>
+    {{#each data}}
+    <tr>
+      <td>{{this.supplierID}}</td>
+      <td>{{this.name}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.phone}}</td>
+      <td>{{this.representativeName}}</td>
+      
+      <td><button onclick="deleteSupplier({{this.supplierID}})">Delete</button></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+<script src="./js/delete_supplier.js"></script>
+
+
+<h2>Search Using an HTML Form</h2>
+<form id="search-supplier-html" method='GET' action='/suppliers'>
+    <label for="input-name">Search by Supplier Name: </label>
+    <input type="text" name="name" id="input-name-html-search">
+    
+    <input type="submit">
+    <a href='/suppliers'><button>Reset</button></a>
+</form>
+<p>Search by supplier's name using the field above. Partial names are OK too!</p>
+
+<!-- /views/customers.hbs -->
+<h2>Add a New Supplier</h2>
+<form id="add-supplier-form-ajax">
+  <label for="input-name">Name: </label>
+  <input type="text" name="input-name" id="input-name">
+
+  <label for="input-email">Email: </label>
+  <input type="text" name="input-email" id="input-email">
+
+  <label for="input-phone">Phone: </label>
+  <input type="text" name="input-phone" id="input-phone">
+
+  <label for="input-representativeName">Representative's Name: </label>
+  <input type="text" name="input-representativeName" id="input-representativeName">
+
+  <input type="submit">
+</form>
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_supplier.js"></script>
+
+
+<!-- /views/customers.hbs -->
+<h2>Update a Supplier's Email</h2>
+<form id="update-supplier-form-ajax">
+
+  <label for="input-supplierID">Supplier ID #: </label>
+  <select name="input-supplierID" id="mySelect">
+    <option value="test">Select a Supplier's ID</option>
+    {{#each data}}
+      <option value="{{this.supplierID}}">{{this.supplierID}}</option>
+    {{/each}}
+  </select>
+
+  <label for="input-email">Email: </label>
+  <input type="text" name="input-email" id="input-email-update">
+
+  <input type="submit">
+
+</form>
+<script src="./js/update_supplier.js"></script>
+
